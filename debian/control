@@ -1,0 +1,17 @@
+Source: slurm
+Section: net
+Priority: optional
+Maintainer: Debian QA Group <packages@qa.debian.org>
+Build-Depends: debhelper (>= 5.0.0), libncurses5-dev
+Standards-Version: 3.7.3
+
+Package: slurm
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Realtime network interface monitor
+ Slurm has the following features:
+  * realtime traffic statistics divided into incoming and outgoing 
+  * optional combined view 
+  * can monitor any kind of network interface 
+  * shows detailed statistics about the interface. 
+  * it's themeable
