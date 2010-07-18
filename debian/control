@@ -3,7 +3,7 @@ Section: net
 Priority: optional
 Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper (>= 5.0.0), libncurses5-dev
-Standards-Version: 3.7.3
+Standards-Version: 3.8.4
 
 Package: slurm
 Architecture: any
