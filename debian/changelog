@@ -1,3 +1,15 @@
+slurm (0.3.3-2) unstable; urgency=low
+
+  * New maintainer (Closes: #482401)
+  * Switch to dpkg-source 3.0 (quilt) format 
+  * Create debian/patches/ for all modification on upstream files
+  * Add debian/watch 
+  * Added vcs-git / vcs-browser to debian/control
+  * debian/copyright refers now GPL-2 instead of GPL
+  * Bump Standards-Version to 3.8.4
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Sun, 18 Jul 2010 19:05:29 +0200
+
 slurm (0.3.3-1) unstable; urgency=low
 
   * QA Upload
