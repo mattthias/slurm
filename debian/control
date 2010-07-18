@@ -1,7 +1,7 @@
 Source: slurm
 Section: net
 Priority: optional
-Maintainer: Debian QA Group <packages@qa.debian.org>
+Maintainer: Matthias Schmitz <matthias@sigxcpu.org>
 Build-Depends: debhelper (>= 5.0.0), libncurses5-dev
 Standards-Version: 3.8.4
 
