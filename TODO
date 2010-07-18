@@ -1,0 +1,45 @@
+known issues:
+
+- when resizing the terminal while running slurm in screen it might be
+  possible that the static parts of the window are not redrawn so we
+  should care about signals.
+
+- Solaris curses problems (Sat Dec 21 15:30:45 CET 2002)
+
+  the solaris network stuff is ok but curses causes crashes
+  UPDATE: fixed as of 2002-12-31.
+
+- BNC media detection (Fri Dec  6 00:50:18 CET 2002)
+
+  While testing slurm on OpenBSD (thanks Auge for the account) I discovered
+  a problem regarding the ifmedireq flags. OpenBSD does not set
+  IFM_ACTIVE or IFM_AVALID for BNC interfaces.
+
+- high load on Linux 2.5 (Thu Dec  5 23:30:43 CET 2002)
+
+  slurm caused 99% load on a Linux 2.5.40 box while transfering data
+  on a saturated 100Mbit link.
+  UPDATE: This hasn't been reproduced until now so it's low priority
+          until someone reports it again.
+  UPDATE: perhaps a usleep() problem might leads to wasting cpu cycles.
+
+- NetBSD interface speed detecion code (Thu Dec  5 23:30:43 CET 2002)
+
+  As of today the interface speed detection code seems to not work
+  correctly on NetBSD/stable.
+  UPDATE: This seems to only concern my sq interface on my Indy.
+
+This matrix shows what works and what not. Feel free to contribute code.
+
+OS       | get_stat | if_media | check_interface ||  overall
+---------+----------+----------+-----------------++----------
+FreeBSD  |   done   |   done   |      done       ||  works
+OpenBSD  |   done   |   done   |      done       ||  works
+ NetBSD  |   done   |   done   |      done       ||  works
+Solaris  |   done   |   done   |      done       ||  works
+  Linux  |   done   |   N/A    |      done       ||  works
+  HP-UX  |   done   |          |                 ||  works
+MicroBSD |   done   |   done   |      done       ||  works
+MacOS X  |   done   |   done   |      done       ||  works
+
+$Id: TODO,v 1.15 2003/09/18 09:59:01 hscholz Exp $

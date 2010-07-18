@@ -1,0 +1,42 @@
+This is just kinda Q & A thing, in case you miss something just send
+a mail to hscholz@wormulon.net.
+_______________________________________________________________________________
+
+Q: Why does slurm have themes?
+A: Because it can.
+
+Q: I want to use slurm to do traffic accounting or MRTG graphs ...
+A: slurm will not support this. Feel free to use the data gathering
+   code from src/. I've started a small project called wormulon
+   (http://www.wormulon.net/wormulon) which utilizes the slurm codebase
+   to create output suitable for inclusion in mrtg, rrdtool or even
+   the screen hardstatus line.
+
+Q: Can I include slurm into the screen hardstatus line?
+A: See previous question and have a look at wormulon.
+
+Q: WTF is 'slurm'? / How did it all start?
+A: The idea came up while installing Linux systems during a small
+   Linux installation party. Using pppstatus to monitor the ADSL
+   uplink I did not find any equivalent app for *BSD. Lacking a similar
+   application I removed the Linux dependent ppp code from pppstatus
+   and added FreeBSD sysctl() code for data aquisation at ~3AM the
+   same night.
+   Ripping off the connection time accounting and email checks I ended
+   up with something useful. Adding it to my CVS repository it needed
+   a name, so the first thing that came into my mind was 'slurm' since
+   I just saw the latest Futurama episode featuring 'Slurm Mc Kenzie'
+   and the 'Slurm Factory', hence the name slurm.
+   P.S. wormulon which is based on slurm is the name of the homeplanet
+        of Slurm McKenzie.
+
+Q: Why are you not showing link information like 100MBits on Linux?
+A: Linux does not have a common way to save media type an link information.
+   Gathering those information with tools like mii-tool or ethtool involve
+   reading data directly from the ethernet cards EEPROM and success
+   depends the card. Have a look at the ethtool source code if you want
+   to know how nasty the whole thing might get. Integrating this slurm
+   would need suid root privileges on Linux which is normally a bad idea.
+
+_______________________________________________________________________________
+$Id: FAQ,v 1.3 2004/02/06 02:33:54 hscholz Exp $

@@ -1,0 +1,98 @@
+AC_INIT([slurm], [0.3.3], [hscholz@wormulon.net])
+AM_INIT_AUTOMAKE(AC_PACKAGE_TARNAME, AC_PACKAGE_VERSION)
+AC_PROG_CC
+AC_PROG_INSTALL
+
+AM_CONFIG_HEADER(config.h)
+AC_CHECK_HEADERS(string.h)
+AC_DEFINE([CURSES_SOLARIS_NOCOLOR], [0], [turn off colors on Solaris])
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS([arpa/inet.h netinet/in.h stdlib.h string.h strings.h sys/ioctl.h sys/param.h sys/socket.h sys/time.h unistd.h])
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
+
+# Checks for library functions.
+AC_FUNC_ERROR_AT_LINE
+AC_PROG_GCC_TRADITIONAL
+AC_FUNC_MALLOC
+AC_TYPE_SIGNAL
+AC_FUNC_VPRINTF
+AC_CHECK_FUNCS([bzero gethostname memset socket strstr])
+
+# OS type
+AC_CANONICAL_HOST
+if test x${host_os} = xlinux-gnu ; then
+  OSTYPE="linux"
+elif test "`echo ${host_os} | sed 's/^\(linux\).*$/\1/'`" = "linux" ; then
+  OSTYPE="linux"
+elif test "`echo ${host_os} | sed 's/^\(irix\).*$/\1/'`" = "irix" ; then
+  OSTYPE="irix"
+elif test "`echo ${host_os} | sed 's/^\(solaris\).*$/\1/'`" = "solaris" ; then
+  OSTYPE="solaris"
+elif test "`echo ${host_os} | sed 's/^\(darwin\).*$/\1/'`" = "darwin" ; then
+  OSTYPE="darwin"
+else
+  OSTYPE="${host_os}"
+fi
+AC_DEFINE(OSTYPE, ["${OSTYPE}"], [The operating system to build for])
+
+for cursespath in /usr/include/ncurses.h /usr/local/include/ncurses.h /usr/local/include/ncurses/ncurses.h /opt/include/ncurses.h /opt/include/curses.h /usr/include/curses.h /usr/local/include/curses.h /dev/null
+do
+  test -f "${cursespath}" && break
+done
+case ${cursespath} in
+  /usr/include/*) 
+	CFLAGS="$CFLAGS -I/usr/include"
+	LDFLAGS=""
+	;;
+  /usr/local/include/ncurses/*)
+        CFLAGS="${CFLAGS} -I/usr/local/include/ncurses"
+        LDFLAGS="-L/usr/local/lib"
+        SOLLDFLAGS="-R/usr/local/lib"
+        ;;
+  /usr/local/include/*) 
+	CFLAGS="${CFLAGS} -I/usr/local/include"
+	LDFLAGS="-L/usr/local/lib"
+	SOLLDFLAGS="-R/usr/local/lib"
+	;;
+  /opt/include/*) 
+	CFLAGS="${CFLAGS} -I/opt/include"
+	LDFLAGS="-L/opt/lib"
+	SOLLDFLAGS="-R/opt/lib"
+	;;
+esac
+# add Slowlaris -R and libraries to LDFLAGS
+if test ${OSTYPE} = "solaris" ; then
+	LDFLAGS="${LDFLAGS} ${SOLLDFLAGS} -lnsl -lsocket -lkstat"
+fi
+
+AC_CHECK_LIB(fridge, vanilla_coke, echo "WTF?!", echo "Warning: No vanilla coke found in fridge.";echo "We highly suggest that you rectify this situation immediatly.")
+ncurses_support="no"
+curses_support="no"
+color_support="no"
+AC_CHECK_LIB(ncurses, use_default_colors, LDFLAGS="$LDFLAGS -lncurses"; CFLAGS="$CFLAGS -D_HAVE_NCURSES -D_HAVE_NCURSES_COLOR"; color_support="yes"; ncurses_support="yes", AC_CHECK_LIB(ncurses, use_default_colors, LDFLAGS="$LDFLAGS -lncurses"; CFLAGS="$CFLAGS -D_HAVE_NCURSES"; ncurses_support="yes"; echo "NO TRANSPARENCY SUPPORT in this ncurses lib", AC_CHECK_LIB(curses, initscr, LDFLAGS="$LDFLAGS -lcurses"; CFLAGS="$CFLAGS -D_HAVE_CURSES"; curses_support="yes"; echo "NO TRANSPARENCY SUPPORT in curses lib"))) 
+
+# disable color support on Solaris for now
+if test ${OSTYPE} = "solaris" ; then
+	color_support="no"
+	AC_DEFINE([CURSES_SOLARIS_NOCOLOR], 1)
+fi
+
+AC_OUTPUT(Makefile)
+
+echo "
+  slurm configuration:
+
+        slurm version: ${VERSION}
+     operating system: ${OSTYPE}
+      ncurses support: ${ncurses_support}
+       curses support: ${curses_support}
+        color support: ${color_support}
+             compiler: ${CC}
+       compiler flags: ${CFLAGS}
+         linker flags: ${LDFLAGS}
+"

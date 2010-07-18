@@ -1,0 +1,429 @@
+
+- tag SLURM-0_3_3
+
+2004-10-12  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* Makefile:
+	* config.guess:
+	* config.sub:
+
+	- update config.* to allow configure run on DragonFly BSD (i386 only)
+
+
+2004-09-28  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* Makefile:
+	* configure:
+	* configure.in:
+
+	bump to VERSION 0.3.3
+
+2004-09-28  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* README: minor OS updates
+	* os.h: allow compilation on Sun Forte CC systems again
+	* slurm.c: (main):
+	* theme.c: (theme_readfile): remove NOTICE error
+	* themes/black.theme: new theme
+
+2004-09-27  Hendrik Scholz <hscholz@raisdorf.net>
+
+	* src/if_media.c: (get_if_speed):
+
+	- use better CPP magic to detect OS features
+	- allow compilation on a few OpenBSD systems again
+
+2004-05-27  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* .cvsignore:
+	* os.h:
+	* src/if_media.c: (get_if_speed):
+
+	- add validinterface() check on Mac OS X
+
+2004-02-13  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* Makefile:
+	* Makefile.in:
+	* aclocal.m4:
+	* config.h.in:
+	* configure:
+	* configure.in:
+	* slurm.c: (usage):
+	* slurm.h:
+
+	- remove version name from OS for 'darwin' aka Mac OS X
+	- s/VERSION/PACKAGE_VERSION/
+
+2004-02-13  Hendrik Scholz  <hscholz@wormulon.net>
+
+	* AUTHORS:
+	* COPYING:
+	* Changelog:
+	* INSTALL:
+	* Makefile:
+	* Makefile.am:
+	* Makefile.in:
+	* THEMES:
+	* THEMES.txt:
+	* aclocal.m4:
+	* config.guess:
+	* config.h.in:
+	* config.sub:
+	* configure:
+	* configure.in:
+	* depcomp:
+	* install-sh:
+	* missing:
+	* mkinstalldirs:
+
+	- major config subsystem replacement
+	- mv THEMES THEMES.txt (welcome to Mac OS X :))
+
+2004-02-05  Hendrik Scholz  <hscholz@wormulon.net>
+
+	* src/if_media.c: (get_if_speed):
+
+    - add support for pre 4.5-RELEASE FreeBSD (tested on 4.2-REL :))
+
+2004-02-05  Hendrik Scholz  <hscholz@wormulon.net>
+
+	* FAQ: added Linux media Q/A
+	* README: s/raisdorf/wormulon/
+	* slurm.1: s/raisdorf/wormulon/, added -L option
+	* slurm.c: (slurm_shutdown): s/raisdorf/wormulon/
+	* slurm.spec: s/raisdorf/wormulon/
+	* theme.c: (theme_readfile): added -D__Debian__ to search for
+		themes in /usr/share rather than /usr/local/share
+
+2004-02-05  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* Makefile:
+	* Makefile.in: add -DWITH_LED per default
+	* slurm.c: (update_stat_large), (update_stat_split),
+	(update_stat_combined), (usage), (draw_face), (main):
+	* slurm.h:
+
+	- add -L switch to enable LED
+
+2003-10-07  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* Makefile:
+	* Makefile.in:
+	* theme.c: (theme_readfile):
+
+	- reduce overhead in upcoming NetBSD port upgrade
+
+2003-09-18  Hendrik Scholz  <hscholz@raisdorf.net>
+
+	* TODO: upd
+	* slurm.spec: initial specfile based on 0.2.3
+
+Thu Sep 11 14:08:07 CEST 2003
+
+    - clean up Solaris code
+    - 0.3.1 RELEASE
+
+Wed Sep 10 21:18:32 CEST 2003
+
+    - print usage information if no interface was given at startup
+
+Wed Sep 10 21:03:59 CEST 2003
+
+    - add Mac OS X support (thanks Jan-Eric Kolbe for providing access!)
+    - 0.3.1-pre2
+
+Mon Sep  8 23:22:00 CEST 2003
+
+    - calculate traffic right when using -d option
+
+Sat Sep  6 06:01:27 EDT 2003
+
+    - disable LED (set -DWITH_LED to enable them)
+    - moved left part of statistics left to allow traffic > 10.000kBytes/s
+    - make slurm Gbit-safe (tests with >100MByte/s will be done soon :))
+    - make -Wall happy on Linux
+
+Fri Aug 22 06:20:36 EDT 2003
+
+    - fix 32bit signed vs. unsigned bug
+    - improve Linux /proc/net/dev parsing
+
+Sat Aug 16 16:06:32 CEST 2003
+
+    - 0.3.0 release
+    - again modify sleep stuff to recognize input while sleeping
+
+Wed Aug 13 00:16:57 CEST 2003
+
+    - unify sleep method
+
+Wed Aug 13 00:03:21 CEST 2003
+
+    - add 'make prof' target for profiling and update .cvsignore
+
+Thu Aug  7 04:21:01 CEST 2003
+
+    - use sleep() instead of usleep() for sleep durations longer
+      than one second on Linux to prevent wasting cpu cycles
+    - update FAQ, README and add THEMES file
+
+Wed Jul  9 18:44:24 CEST 2003
+
+	- add FAQ
+	- add -Wall to compile flags
+
+Wed Jul  9 18:39:26 CEST 2003
+
+	- add signalhandler for various signal so killing slurm doesn't
+	  leave a scrambled terminal behind
+	- add -t option to usage()
+	  
+Sun May 25 16:44:49 CEST 2003
+
+	- remove -H option and make it default
+	- add initial theme engine (only tested on FreeBSD! until now)
+
+Sun May  4 13:55:46 CEST 2003
+
+	- catch up on FreeBSDs include/net/if_media.h since the typos
+      have been fixed.
+
+Sun Apr 27 18:12:49 CEST 2003
+
+	- change data_type structure so we won't get into trouble displaying
+	  up to 999999.999GB 
+
+Sat Apr 19 20:09:29 CEST 2003
+
+	- add THE missing 'E'
+
+Tue Apr  8 22:58:45 CEST 2003
+
+	- Solaris interface speed detection code added to src/if_media.c
+
+Wed Apr  2 00:00:34 CEST 2003
+
+    - add Solaris support to auto* stuff so slurm can be build on Solaris
+      with just ./configure && make
+
+Wed Mar 26 23:43:54 CET 2003
+
+	- add -z command line option and 'z' key to virtually reset all counters
+
+Thu Mar 20 23:23:46 CET 2003
+
+	- fix padding problems with speeds changing dimensions
+
+Mon Feb 24 19:55:56 CET 2003
+
+    - NetBSD support w/ curses only
+
+Sun Feb 23 18:26:40 CET 2003
+
+	- auto* updates
+	- add checkinterface() for Linux
+	- unify checkinterface() in src/<os>.h
+	- manpage update
+
+Thu Feb 20 21:06:22 CET 2003
+
+	- use autoconf for Makefile generation
+
+Wed Feb 19 17:12:37 CET 2003
+
+	- -d delay option (also suggested bt Joe Laffey)
+
+Tue Feb 18 23:27:55 CET 2003
+
+	- slurm now has transparent graphics (for Eterm, aterm, ...)
+
+Tue Feb 18 20:06:22 CET 2003
+
+	- add -H flag to display hostname in title as suggested by Joe Laffey
+
+Mon Feb 17 22:14:58 CET 2003
+
+    - full MicroBSD support using OpenBSD functions
+
+Thu Feb 13 10:57:15 CET 2003
+
+	- swap rx and tx in large view
+
+Fri Feb  7 20:58:12 CET 2003
+
+	- slurm 0.2.0
+	- minor string length fix in split mode
+
+Wed Feb  5 19:50:51 CET 2003
+
+	- some really minor changes made it into the tree, the most important
+      of them is a small fix the the Linux networking code to fix
+	  the 32bit counter overflow issue
+
+Jan 10 18:57:20 CET 2003
+
+    - add more accurate FreeBSD version description to src/if_media.c
+      so older FreeBSD releases don't break due to missing defines
+
+Tue Dec 31 23:24:53 CET 2002
+
+    - slurm 0.0.10
+
+Tue Dec 31 20:52:30 MET 2002
+
+    - added Solaris curses support. The network code was already working so
+      now slurm can be used on Solaris. Further tests will follow. See
+      TODO for status.
+
+Tue Dec 31 01:38:43 CET 2002
+
+    - utilize a small char array as temporary storage for all changing strings
+      we print so we can prevent leaving garbage on the screen
+
+Tue Dec 31 00:52:54 CET 2002
+
+    - revert src/linux.c to 0.0.8 as my untested 0.0.9 version did not work
+      as expected. Thanks to Felix von Leitner for mentioning this.
+
+Sat Dec 28 13:41:06 CET 2002
+
+    - add another NetBSD Gbit Ethernet type
+
+Wed Dec 25 21:00:40 CET 2002
+
+    - remove check if interface if up from src/if_media.c as it is causing
+      more and more problems.
+    - speed up interface detection code for NetBSD and OpenBSD while I'm at it
+
+Wed Dec 25 12:11:19 CET 2002
+
+    - prevent calculation of negative rx/tx speed in case of a
+      32bit counter overflow
+
+Wed Dec 25 10:57:03 CET 2002
+
+    - added FreeBSD -stable Wireless speed definitions to src/if_media.c
+
+Mon Dec 23 14:00:00 CET 2002
+
+    - slurm 0.0.9 released
+
+Mon Dec 23 13:19:05 CET 2002
+
+    - speedup src/linux.c by fseeking() to the third line before starting
+      to parse each line until we get the needed information
+
+Mon Dec 23 12:53:55 CET 2002
+
+    - (re)add -s cli option
+
+Sat Dec 21 15:29:12 CET 2002
+
+    - added Solaris support in the meanwhile. Network stuff works
+      but curses causes segmentation faults.
+
+Sat Dec  7 17:00:39 CET 2002
+
+    - slurm 0.0.8
+
+Sat Dec  7 16:51:11 CET 2002
+
+    - update_() functions now save more data than needed for seamless
+      display mode switching
+
+Fri Dec  6 00:44:21 CET 2002
+
+    - OpenBSD 2.9 (others?) compile fix
+    - OpenBSD BNC media detection fix (ugly workaround but OpenBSD
+      doesn't seem to set the correct status bits)
+
+Wed Dec  4 14:44:20 CET 2002
+
+    - improve the HPUX support
+
+Wed Dec  4 00:10:20 CET 2002
+
+    - added Linux sanity checks and more documentation
+    - remove annoying compiler warnings on Linux for src/if_media.c
+
+Tue Dec  3 23:59:16 CET 2002
+
+    - added initial HPUX support (thanks Oliver Lehmann)
+    - tagged as SLURM-0_0_8PRE3
+
+Tue Nov 19 00:17:40 CET 2002
+
+    - added KEYS file, please read it as there are helpful keys :)
+      I guess it's time for a manpage now
+
+Mon Nov 18 23:48:54 CET 2002
+
+    - added a new "large split window" mode
+
+Fri Nov 15 18:11:07 CET 2002
+
+    - add checkinterface() for NetBSD and OpenBSD
+
+Wed Nov 13 13:45:53 CET 2002
+
+    - NetBSD port
+
+Wed Nov 13 07:35:04 CET 2002
+
+    - fix 32bit counter overruns
+
+Wed Nov 13 07:25:21 CET 2002 (done last night :))
+
+    - added OpenBSD support
+    - fixed some ugla off-by-one errors which lead to crashes on OpenBSD
+      and broken graphs in some cases.
+
+Mon Nov 11 19:48:11 CET 2002
+
+    - code cleanup
+
+Mon Nov 11 19:24:05 CET 2002
+
+    - FreeBSD -current fix
+    - Bandwidth detection now prints correct strings
+
+Mon Nov 11 00:00:34 CET 2002
+
+    - fix build problems on FreeBSD -current
+
+Sun Nov 10 20:18:57 CET 2002
+
+    - merged split and combined view
+    - command line option -c switched back to the classic view
+    - operating system dependend functions moved to src/
+
+Sun Nov 10 18:51:46 CET 2002
+
+    - finally added a working splitted view for RX and TX
+    - interface speed detection moved to src/if_media.[ch]
+
+Sat Nov  2 00:52:18 CET 2002
+
+    - finished getopt() interface and checks for FreeBSD
+
+Fri Nov  1 23:50:33 CET 2002
+
+    - added compilier flags to produce more errors :)
+    - major graph upgrade so the graph scales up/down to give a better
+      overview
+
+Tue Oct 29 23:46:08 CET 2002
+
+    - added basic Linux support
+
+Sun Oct 27 20:21:12 CET 2002
+
+    - solved 32bit counter issues by adding an overflow counter
+    - fixed curses problems
+
+Sat Oct 26 18:58:20 CEST 2002
+
+    - cannot read speed on tun devices. returns 115200 for my pppoe link
+    - curses problems
+    - received/sent bytes are only 32bit

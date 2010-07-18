@@ -1,0 +1,49 @@
+slurm - yet another network load monitor
+
+*** see Changelog for Changes ***
+
+slurm started as a FreeBSD port of the Linux ppp link monitor called
+pppstatus by Gabriel Montenegro.
+I ripped of the ppp dependent parts and the email checks to turn in into
+a generic network load monitor for *BSD, Linux, HP-UX and Solaris.
+
+features:
+
+    - "realtime" traffic statistics
+    - three graph modes: combined RX and TX and two split views
+    - can monitor any network device
+    - curses ascii graphics
+	- ascii theme support
+
+slurm was tested on:
+
+ - FreeBSD >= 4.6 -stable (earlier should work but not tested)
+ - FreeBSD 6.x -current (May '02 and later, earlier version should work)
+ - Debian GNU/Linux stable and unstable
+ - SuSE 8.0 and 8.1
+ - OpenBSD 3.x/i386 /sparc64
+ - NetBSD 1.6-stable/sgimips and /x86, NetBSD 2.0-RC1/sparc64
+ - HP-UX B.11.00 (10.xx won't work as a result of missing MIB functions. That
+                  could change somedays if we decide to implement dlpi API
+                  calls, which are supported at least in 10.20, in slurm.)
+ - Solaris 7/sparc (Ultra 30 and E250)
+ - Solaris 8/sparc (X1, E450, E10k)
+ - Solaris 9/sparc (Ultra 30, Sunfire 280,480)
+ - Solaris 8/intel (iprb network interface)
+ - MicroBSD 0.6RC2/x86
+ - DragonFly 1.1/i386
+
+Compiling:
+
+official releases come with GNU configure so ./configure && make should do it.
+In all other cases autoheader && autoconf && ./configure && make is
+appropriate to build slurm.
+Please report all problems as I just switched to autoconf as of 0.2.1
+
+  author: Hendrik Scholz
+ website: http://www.wormulon.net/slurm/
+   email: hendrik@scholz.net
+
+As pppstatus is licensed under the GPL, slurm is too.
+
+$Id: README,v 1.19 2004/10/12 20:04:53 hscholz Exp $

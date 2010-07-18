@@ -1,0 +1,11 @@
+slurm
+slurm.core
+slurm.o
+.slurm.c.swp
+slurm.gmon
+config.h
+config.log
+config.status
+autom4te.cache
+.deps
+stamp-h1

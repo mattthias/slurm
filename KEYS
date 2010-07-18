@@ -1,0 +1,13 @@
+
+As of 0.0.7 the user can change the display mode without quitting slurm.
+Just press "m" to cycle between modes or
+
+    - "c" for the old combined/classic mode
+    - "s" for the split window mode with stats
+    - "l" for the large window mode w/o stats
+
+	- "z" to reset most counters
+    - "r" to redraw the screen
+    - "q" to quit slurm
+
+$Id: KEYS,v 1.2 2003/03/31 20:15:54 hscholz Exp $

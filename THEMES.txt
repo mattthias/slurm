@@ -1,0 +1,24 @@
+_______________________________________________________________________________
+T H E M E S
+
+Themes basicly allow the user to change the look of slurm.
+In case you don't like the default color set you can create a new
+one and instruct slurm to use it:
+
+$ slurm -i foo0 -t mytheme
+
+In this case 'mytheme' is the name of the theme that should be installed
+in either in the current working directory, ~/.slurm or
+/usr/local/share/slurm.
+
+F I L E   L A Y O U T
+
+For a quick start just copy an existing theme and modify it.
+The main part (comments are allowed) is a simple key & value thing
+you should be familiar with.
+
+In case there are any questions please contact me.
+I'd like to add some themes to the main distribution but won't add
+all since the codebase should stay small.
+_______________________________________________________________________________
+$Id: THEMES.txt,v 1.1 2004/02/13 05:13:52 hscholz Exp $

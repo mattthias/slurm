@@ -1,0 +1,62 @@
+.TH slurm 1
+.Dd February 23, 2003
+.Dt slurm 1
+.\" $Id: slurm.1,v 1.4 2004/02/06 02:33:54 hscholz Exp $
+.\"
+.Sh NAME
+slurm \- yet another network load monitor
+.Sh SYNOPSIS
+.Nm slurm
+.Op Fl hHz
+.Op Fl csl
+.Op Fl d Ar delay
+.Op Ar "i interface"
+.Sh DESCRIPTION
+slurm is a generic network load monitor which shows device statistics
+together with a nice ascii graph. Three different types of graphs are
+supported.
+.Sh OPTIONS
+.Bl -tag -width Ds
+.It Fl h
+Print usage information and quit.
+.It Fl H
+add hostname to title
+.It Fl c
+start slurm with classic/combined graph
+.It Fl s
+start slurm in split graph mode
+.It Fl l
+start slurm in large split graph mode
+.It Fl z
+virtually zero traffic counters instead of showing values stored in kernel
+.It Fl d Ar delay
+delay between screen updates in milliseconds (1000 = once per second)
+.It Fl i Ar interface
+select interface to monitor (required)
+.Sh KEYS
+slurm supports several different keys for interaction:
+.Bl -tag -width Ds 
+.It Ar c
+switch to classic mode
+.It Ar s
+switch to split graph mode
+.It Ar l
+switch to large graph mode
+.It Ar L
+enable TX/RX led
+.It Ar m
+switch between classic, split and large view
+.It Ar z
+zero counters
+.It Ar r
+redraw screen
+.It Ar q
+quit slurm
+.Sh BUGS
+Several features of slurm are not supported on certain platforms, i.e.
+Interface speed detection is only supported on *BSD. Please check
+the source code documentation to see if your bug is really a bug.
+Please report bugs to hendrik@scholz.net
+.Sh AUTHOR
+Hendrik Scholz <hendrik@scholz.net>
+http://www.wormulon.net/slurm/
