@@ -1,0 +1,30 @@
+Subject: Fix errors in manpage
+Author: Frank Lichtenheld <djpig@debian.org>
+
+--- slurm-0.3.3.orig/slurm.1
++++ slurm-0.3.3/slurm.1
+@@ -10,7 +10,7 @@ slurm \- yet another network load monito
+ .Op Fl hHz
+ .Op Fl csl
+ .Op Fl d Ar delay
+-.Op Ar "i interface"
++.B  -i interface
+ .Sh DESCRIPTION
+ slurm is a generic network load monitor which shows device statistics
+ together with a nice ascii graph. Three different types of graphs are
+@@ -33,6 +33,7 @@ virtually zero traffic counters instead
+ delay between screen updates in milliseconds (1000 = once per second)
+ .It Fl i Ar interface
+ select interface to monitor (required)
++.El
+ .Sh KEYS
+ slurm supports several different keys for interaction:
+ .Bl -tag -width Ds 
+@@ -52,6 +53,7 @@ zero counters
+ redraw screen
+ .It Ar q
+ quit slurm
++.El
+ .Sh BUGS
+ Several features of slurm are not supported on certain platforms, i.e.
+ Interface speed detection is only supported on *BSD. Please check
