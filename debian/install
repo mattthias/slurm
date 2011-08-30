@@ -1,0 +1,2 @@
+slurm usr/bin/slurm
+themes/* usr/share/slurm/
