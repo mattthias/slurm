@@ -2,7 +2,7 @@ Source: slurm
 Section: net
 Priority: optional
 Maintainer: Matthias Schmitz <matthias@sigxcpu.org>
-Build-Depends: debhelper (>= 7.0.0), libncurses5-dev
+Build-Depends: debhelper (>= 7.0.0), libncurses5-dev, scons
 Standards-Version: 3.9.1
 vcs-git: git://git.debian.org/users/matthias-guest/slurm.git
 vcs-browser: http://git.debian.org/?p=users/matthias-guest/slurm.git;a=summary
