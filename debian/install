@@ -1,2 +1,2 @@
-slurm usr/bin/slurm
+slurm usr/bin/
 themes/* usr/share/slurm/
