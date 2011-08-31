@@ -50,7 +50,7 @@
 #ifdef __HPUX__
 #include "src/hpux.h"
 #include "src/hpux.c"
-#elif __FreeBSD__
+#elif __FreeBSD__ || __FreeBSD_kernel__
 #include "src/freebsd.h"
 #include "src/freebsd.c"
 #elif __linux__

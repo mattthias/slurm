@@ -229,6 +229,29 @@
 #include <sys/sockio.h>
 #include <arpa/inet.h>
 #include <net/if.h>
+#elif __FreeBSD_kernel__           /* G N U / k F r e e B S D */
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdarg.h>
+#include <unistd.h>
+#include <string.h>
+#include <time.h>
+#include <ctype.h>
+#include <signal.h>
+#include <curses.h>
+#include <sys/param.h>
+#include <sys/sysctl.h>
+#include <sys/wait.h>
+#include <sys/stat.h>
+#include <sys/ioctl.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <sys/time.h>
+#include <netinet/in.h>
+#include <net/if.h>
+#include <net/if_media.h>
+#include <net/if_mib.h>
+#include <arpa/inet.h>
 #else
 #error	"Your OS is not supported! Please report to hscholz@raisdorf.net"
 #endif                      /* OS selection */
