@@ -1,21 +1,12 @@
-slurm (0.4.0.rc1-1~1.gbp29da59) UNRELEASED; urgency=low
-
-  ** SNAPSHOT build @29da59505705ae663efe598417861a7fe6331056 **
-
-  * [5fca123] Add support for __FreeBSD_kernel__ 
-  * [d8ec097] Add cpp define for colorful ncurses
-  * [9aedf7a] Fix minor typo
-
- -- Matthias Schmitz <matthias@sigxcpu.org>  Mon, 05 Sep 2011 22:49:39 +0200
-
-slurm (0.4.0.rc0-1) UNRELEASED; urgency=low
+slurm (0.4.0-1) unstable; urgency=low
 
   * Change build system from autoconf to scons
   * Change to debhelper 7
   * Bump Standards-Version to 3.9.1
   * Bump debhelper compat level to 7
+  * Add support for GNU/kFreeBSD
 
- -- Matthias Schmitz <matthias@sigxcpu.org>  Tue, 30 Aug 2011 22:47:24 +0200
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Mon, 05 Sep 2011 23:20:00 +0200
 
 slurm (0.3.3-2) unstable; urgency=low
 
