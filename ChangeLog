@@ -1,3 +1,10 @@
+2011-09-05 Matthias Schmitz <matthias@sigxcpu.org>
+	* tag version 0.4.0
+	* Remove gnu build system, use scons instead
+	* Add support for GNU/kFreeBSD
+	* Probably break support for any other os than Linux and kFreeBSD (
+	  will fixed soon )
+
 
 - tag SLURM-0_3_3
 
