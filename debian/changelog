@@ -1,3 +1,13 @@
+slurm (0.4.0.rc1-1~1.gbp29da59) UNRELEASED; urgency=low
+
+  ** SNAPSHOT build @29da59505705ae663efe598417861a7fe6331056 **
+
+  * [5fca123] Add support for __FreeBSD_kernel__ 
+  * [d8ec097] Add cpp define for colorful ncurses
+  * [9aedf7a] Fix minor typo
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Mon, 05 Sep 2011 22:49:39 +0200
+
 slurm (0.4.0.rc0-1) UNRELEASED; urgency=low
 
   * Change build system from autoconf to scons
