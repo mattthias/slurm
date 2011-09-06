@@ -1,12 +1,12 @@
 slurm (0.4.0-1) unstable; urgency=low
 
-  * Change build system from autoconf to scons
+  * Change build system from autoconf to scons (Closes: #640221, LP: #832924)
   * Change to debhelper 7
   * Bump Standards-Version to 3.9.1
   * Bump debhelper compat level to 7
   * Add support for GNU/kFreeBSD
 
- -- Matthias Schmitz <matthias@sigxcpu.org>  Mon, 05 Sep 2011 23:20:00 +0200
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Tue, 06 Sep 2011 08:43:28 +0200
 
 slurm (0.3.3-2) unstable; urgency=low
 
