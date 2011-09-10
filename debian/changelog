@@ -7,8 +7,9 @@ slurm (0.4.0-1) unstable; urgency=low
   * Bump debhelper compat level to 7
   * Change debian/copyright to DEP-5 format
   * Bump Standards-Version to 3.9.2
- 
- -- Matthias Schmitz <matthias@sigxcpu.org>  Tue, 06 Sep 2011 08:43:28 +0200
+  * Point debian/watch to upstream's new home
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Sat, 10 Sep 2011 23:50:56 +0200
 
 slurm (0.3.3-2) unstable; urgency=low
 
