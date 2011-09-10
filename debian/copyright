@@ -1,24 +1,46 @@
-This package was debianized by Fabian Franz <debian@fabian-franz.de> on
-Sun, 25 Jan 2004 21:06:14 +0100.
+Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174&view=co
+Upstream-Name: slurm
+Source: https://github.com/mattthias/slurm
 
-It was downloaded from http://www.wormulon.net/slurm/
+Files: debian/* 
+Copyright: 2004, Fabian Franz <debian@fabian-franz.de>
+           2007, Frank Lichtenheld <djpig@debian.org>
+	   2010, Matthias Schmitz <matthias@sigxcpu.org>
+License: GPL-2+
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later
+ version.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ /usr/share/common-licenses/GPL-2.
 
-Upstream Author: Hendrik Scholz <hscholz@wormulon.net>
 
-Copyright:
+Files: *
+Copyright: 2002 Hendrik Scholz <hscholz@raisdorf.net>
+           2011 Matthias Schmitz <matthias@sigxcpu.org>
+License: GPL-2+
+ This program is free software; you can redistribute it
+ and/or modify it under the terms of the GNU General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the License, or (at your option) any later
+ version.
+ .
+ This program is distributed in the hope that it will be
+ useful, but WITHOUT ANY WARRANTY; without even the implied
+ warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+ PURPOSE.  See the GNU General Public License for more
+ details.
+ .
+ On Debian systems, the full text of the GNU General Public
+ License version 2 can be found in the file
+ /usr/share/common-licenses/GPL-2.
 
-slurm is copyright (c) 2002-2004 by Hendrik Scholz and licensed
-through the GNU General Public License.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of the GNU General Public License as published by the
-Free Software Foundation; either version 2, or (at your option) any
-later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-On Debian Systems the full text of the license can be found in
-/usr/share/common-licenses/GPL-2.
