@@ -1,1 +1,3 @@
-# No upstream development since 2004 and no public scm or download available
+# use Gunnar Wolf's great github redirector service
+version=3
+http://githubredir.debian.net/github/mattthias/slurm/.*(\d\.\d\.\d)\.tar\.gz
