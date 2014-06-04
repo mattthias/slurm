@@ -3,8 +3,8 @@ require "formula"
 
 class Slurm < Formula
   homepage "https://github.com/mattthias/slurm"
-  url "https://github.com/returned/slurm/archive/upstream.zip"
-  sha1 "aea3235e382e192f6b239a6b65d7768079999a38"
+  url "https://github.com/return/slurm/archive/upstream.zip"
+  sha1 "29ec8c911986d4a5c6068f192990d68f74f6596c"
 
 
   version "0.4.0"
