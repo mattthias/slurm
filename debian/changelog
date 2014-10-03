@@ -1,3 +1,15 @@
+slurm (0.4.1-1) unstable; urgency=medium
+
+  * Import new upstream version 0.4.1
+  * Add parameter to let slurm search in /usr/share/slurm for its themes.
+    (Closes upstream issue #1)
+  * Add gbp.conf to deactivate pristine-tar
+  * Bump debhelper compat to 9 to get automatically compiler flags for
+    security hardening.
+  * Import compiler/linker flags from environment.
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Fri, 03 Oct 2014 23:02:47 +0200
+
 slurm (0.4.0-1) unstable; urgency=low
 
   * New upstream version 0.4.0
