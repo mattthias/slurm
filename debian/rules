@@ -3,7 +3,7 @@
 	dh $@
 
 override_dh_auto_build:
-	scons
+	scons debian=1
 
 override_dh_auto_clean:
 	scons -c
