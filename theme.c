@@ -72,7 +72,7 @@ int theme_readfile(theme *t, char *name)
 			bzero(&filename, BUFSIZ);
 #ifdef __NetBSD__
 			snprintf(filename, BUFSIZ, "/usr/pkg/share/slurm/%s.theme", name);
-#elif __Debian__
+#elif defined (__Debian__)
 			snprintf(filename, BUFSIZ, "/usr/share/slurm/%s.theme", name);
 #else
 			snprintf(filename, BUFSIZ, "/usr/local/share/slurm/%s.theme", name);

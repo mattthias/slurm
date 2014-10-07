@@ -33,13 +33,13 @@
 # endif
 #endif
 
-#if defined (__FreeBSD__) || (__OpenBSD__) || (__NetBSD__) \
-		|| (__MicroBSD__) || (__APPLE__) || (__DragonFly__)
+#if defined (__FreeBSD__) || defined (__OpenBSD__) || defined (__NetBSD__) \
+		|| defined (__MicroBSD__) || defined (__APPLE__) || defined (__DragonFly__)
 #define _HAVE_BSD
 #define _HAVE_CHECKINTERFACE
-#elif __HPUX__
+#elif defined (__HPUX__)
 #define _HAVE_CHECKINTERFACE
-#elif __Solaris__
+#elif defined (__Solaris__)
 #define _HAVE_CHECKINTERFACE
 #endif
 
@@ -69,7 +69,7 @@
 #include <sys/mib.h>
 #include <arpa/inet.h>
 #include <net/if.h>
-#elif __FreeBSD__           /* F R E E B S D */
+#elif defined (__FreeBSD__)           /* F R E E B S D */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -96,7 +96,7 @@
 #include <net/ppp_defs.h>
 #include <net/if_ppp.h>
 #endif
-#elif __NetBSD__            /* N E T B S D */
+#elif defined (__NetBSD__)            /* N E T B S D */
 #include <stdio.h>
 #include <sys/param.h>
 #include <sys/sysctl.h>
@@ -123,7 +123,7 @@
 #include <net/ppp_defs.h>
 #include <net/if_ppp.h>
 #include <net/if.h>
-#elif __OpenBSD__ || __MicroBSD__           /* O P E N B S D */
+#elif defined (__OpenBSD__) || defined (__MicroBSD__)           /* O P E N B S D */
 #include <stdio.h>
 #include <sys/param.h>
 #include <sys/sysctl.h>
@@ -149,7 +149,7 @@
 #include <arpa/inet.h>
 #include <net/ppp_defs.h>
 #include <net/if_ppp.h>
-#elif __APPLE__				/* Mac OS X */
+#elif defined (__APPLE__)			/* Mac OS X */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
@@ -175,7 +175,7 @@
 #include <net/if_media.h>
 #include <net/if_mib.h>
 #include <arpa/inet.h>
-#elif __linux__             /* L I N U X */
+#elif defined (__linux__)             /* L I N U X */
 #include <stdio.h>
 #include <sys/param.h>
 #include <sys/sysctl.h>
@@ -198,7 +198,7 @@
 #include <arpa/inet.h>
 #include <net/ppp_defs.h>
 #include <net/if_ppp.h>
-#elif __Solaris__           /* S O L A R I S */
+#elif defined (__Solaris__)           /* S O L A R I S */
 #include <stdio.h>
 #define NO_CURSES_E	1
 #define _WIDEC_H
@@ -229,7 +229,7 @@
 #include <sys/sockio.h>
 #include <arpa/inet.h>
 #include <net/if.h>
-#elif __FreeBSD_kernel__           /* G N U / k F r e e B S D */
+#elif defined (__FreeBSD_kernel__)           /* G N U / k F r e e B S D */
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>

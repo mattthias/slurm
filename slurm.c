@@ -50,25 +50,25 @@
 #ifdef __HPUX__
 #include "src/hpux.h"
 #include "src/hpux.c"
-#elif __FreeBSD__ || __FreeBSD_kernel__
+#elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__)
 #include "src/freebsd.h"
 #include "src/freebsd.c"
-#elif __linux__
+#elif defined (__linux__)
 #include "src/linux.h"
 #include "src/linux.c"
-#elif __OpenBSD__ || __MicroBSD__
+#elif defined (__OpenBSD__) || defined (__MicroBSD__)
 #include "src/openbsd.h"
 #include "src/openbsd.c"
-#elif __NetBSD__
+#elif defined (__NetBSD__)
 #include "src/netbsd.h"
 #include "src/netbsd.c"
-#elif __Solaris__
+#elif defined (__Solaris__)
 #include "src/solaris.h"
 #include "src/solaris.c"
-#elif __APPLE__
+#elif defined (__APPLE__)
 #include "src/macos.h"
 #include "src/macos.c"
-#elif __DragonFly__
+#elif defined (__DragonFly__)
 #include "src/freebsd.h"
 #include "src/freebsd.c"
 #else

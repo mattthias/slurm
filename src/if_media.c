@@ -9,11 +9,11 @@
  * $Id: if_media.c,v 1.35 2004/09/27 13:08:59 hscholz Exp $
  *****************************************************************************/
 
-#if defined (__FreeBSD__) || (__OpenBSD__) || (__NetBSD__) || (__MicroBSD__) || (__APPLE__)
+#if defined (__FreeBSD__) || defined (__OpenBSD__) || defined (__NetBSD__) || defined (__MicroBSD__) || defined (__APPLE__)
 # define MEDIA_H_SUPPORTED
 #endif
 
-#if defined (__OpenBSD__) || (__NetBSD__) || (__MicroBSD__) || (__APPLE__)
+#if defined (__OpenBSD__) || defined (__NetBSD__) || defined (__MicroBSD__) || defined (__APPLE__)
 # define NON_FreeBSD 1
 # define WIRELESS 1
 #else
@@ -146,7 +146,7 @@ int get_if_speed (char *ifstring)
                 case IFM_10_STP:
                     speed = 10 * 1000;
                     break;
-#if defined(__OpenBSD__) || (__MicroBSD__) || (__NetBSD__) || (__APPLE__)
+#if defined(__OpenBSD__) || defined (__MicroBSD__) || defined (__NetBSD__) || defined (__APPLE__)
         case IFM_HPNA_1:
 #else
 #if __FreeBSD__ <= 4
@@ -246,7 +246,7 @@ int get_if_speed (char *ifstring)
 #endif
     return speed;
 }
-#elif __HPUX__
+#elif defined (__HPUX__)
 int get_if_speed(char *ifstring)
 {
     int speed=ERR_IFACE_NO_SPEED, buffer, fd, val, ret = -1;
