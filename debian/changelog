@@ -1,3 +1,11 @@
+slurm (0.4.2-1) unstable; urgency=medium
+
+  * Import new upstream version 0.4.2
+  * New upstream release fixes FTBFS on kfreebsd-* (Closes: #765292)
+  * Bump Standards-Version to 3.9.6
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Tue, 14 Oct 2014 09:16:16 +0200
+
 slurm (0.4.1-1) unstable; urgency=medium
 
   * Import new upstream version 0.4.1
