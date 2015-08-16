@@ -2,31 +2,17 @@ Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174&vie
 Upstream-Name: slurm
 Source: https://github.com/mattthias/slurm
 
+Files: *
+Copyright: 2002 Hendrik Scholz <hscholz@raisdorf.net>
+           2011 Matthias Schmitz <matthias@sigxcpu.org>
+License: GPL-2+
+
 Files: debian/* 
 Copyright: 2004, Fabian Franz <debian@fabian-franz.de>
            2007, Frank Lichtenheld <djpig@debian.org>
 	   2010, Matthias Schmitz <matthias@sigxcpu.org>
 License: GPL-2+
- This program is free software; you can redistribute it
- and/or modify it under the terms of the GNU General Public
- License as published by the Free Software Foundation; either
- version 2 of the License, or (at your option) any later
- version.
- .
- This program is distributed in the hope that it will be
- useful, but WITHOUT ANY WARRANTY; without even the implied
- warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
- PURPOSE.  See the GNU General Public License for more
- details.
- .
- On Debian systems, the full text of the GNU General Public
- License version 2 can be found in the file
- /usr/share/common-licenses/GPL-2.
 
-
-Files: *
-Copyright: 2002 Hendrik Scholz <hscholz@raisdorf.net>
-           2011 Matthias Schmitz <matthias@sigxcpu.org>
 License: GPL-2+
  This program is free software; you can redistribute it
  and/or modify it under the terms of the GNU General Public
