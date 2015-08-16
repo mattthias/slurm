@@ -49,7 +49,9 @@ int theme_readfile(theme *t, char *name)
 	FILE *f;
 	char buf[BUFSIZ+1];
 	char filename[BUFSIZ+1];
+	char *search_paths[5];
 	char *p, *val, *key;
+	int iter;
 
 	t->complete = E_NULL;
 
@@ -60,27 +62,29 @@ int theme_readfile(theme *t, char *name)
 	 *    (make this /usr/share/slurm for Debian systems by specifing
 	 *     -D__Debian__)
 	 */
+	search_paths[0] = ".";                               /* local directory */
+	search_paths[1] = strcat(getenv("HOME"), "/.slurm"); /* $HOME/.slurm/ */
+	search_paths[2] = "/usr/share/slurm";                /* Debian style */
+	search_paths[3] = "/usr/local/share/slurm";          /* default install path */
+	search_paths[4] = "/usr/pkg/share/slurm";            /* NetBSD style */
 
-	bzero(&filename, BUFSIZ);
-	snprintf(filename, BUFSIZ, "%s.theme", name);
-	if ((f = fopen(filename, "r")) == NULL)
-	{
+	for (iter=0; iter <= 4; iter++) {
 		bzero(&filename, BUFSIZ);
-		snprintf(filename, BUFSIZ, "%s/.slurm/%s.theme", getenv("HOME"), name);
-		if ((f = fopen(filename, "r")) == NULL)
+		snprintf(filename, BUFSIZ, "%s/%s.theme", search_paths[iter], name);
+
+		if ((f = fopen(filename, "r")) != NULL)
 		{
-			bzero(&filename, BUFSIZ);
-#ifdef __NetBSD__
-			snprintf(filename, BUFSIZ, "/usr/pkg/share/slurm/%s.theme", name);
-#elif defined (__Debian__)
-			snprintf(filename, BUFSIZ, "/usr/share/slurm/%s.theme", name);
-#else
-			snprintf(filename, BUFSIZ, "/usr/local/share/slurm/%s.theme", name);
-#endif
-			if ((f = fopen(filename, "r")) == NULL)
-				error(ERR_FATAL, "cannot find theme '%s'", name);
+			/* found the theme; leave the loop */
+			break;
 		}
 	}
+
+	/* lets see if we found the theme */
+	if ((f = fopen(filename, "r")) == NULL)
+	{
+		error(ERR_FATAL, "cannot find theme '%s'", name);
+	}
+
 
 	while (fgets(buf, BUFSIZ, f) != NULL)
 	{

@@ -2,4 +2,4 @@ language: c
 compiler:
   - gcc
   - clang
-script: scons
+script: mkdir _build && cd _build && cmake ../ && make

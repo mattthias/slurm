@@ -6,8 +6,7 @@ Just press "m" to cycle between modes or
     - "s" for the split window mode with stats
     - "l" for the large window mode w/o stats
 
-	- "z" to reset most counters
+    - "z" to reset most counters
     - "r" to redraw the screen
     - "q" to quit slurm
 
-$Id: KEYS,v 1.2 2003/03/31 20:15:54 hscholz Exp $
