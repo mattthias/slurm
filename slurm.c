@@ -7,9 +7,8 @@
  * I ripped of the ppp dependend parts and the email checks to turn in into
  * a generic network load monitor running on all common Unices.
  *
- *  author: Hendrik Scholz
- * website: http://www.wormulon.net/slurm/
- *   email: hendrik@scholz.net
+ *  author: Hendrik Scholz, Matthias Schmitz
+ * website: https://www.github.com/mattthias/slurm
  *
  * As pppstatus is licensed under the GPL, slurm is too. See the following
  * paragraphs for information about pppstatus and the license.
@@ -1074,7 +1073,7 @@ int update_stat_combined(void)
 
 void usage (int code, char **argv)
 {
-    fprintf(stderr, "slurm %s - Hendrik Scholz <hendrik@scholz.net>\n\n"
+    fprintf(stderr, "slurm %s - https://github.com/mattthias/slurm\n\n"
     "usage: %s [-hHz] [-csl] [-d delay] [-t theme] -i interface\n\n",
 		PACKAGE_VERSION, argv[0]);
     fprintf(stderr, "    -h            print help\n"
@@ -1606,8 +1605,8 @@ void slurm_shutdown (int sig)
 	endwin();
 	system("clear");
 	curs_set(1);
-	fprintf(stdout, "slurm %s by Hendrik Scholz - "
-		"http://www.wormulon.net/slurm/\n", VERSION);
+	fprintf(stdout, "slurm %s  - "
+		"http://www.github.com/mattthias/slurm/\n", VERSION);
 
 	/* close dev if running Linux */
 #ifdef __linux__
