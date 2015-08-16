@@ -1,19 +1,8 @@
-This is just kinda Q & A thing, in case you miss something just send
-a mail to hscholz@wormulon.net.
+This is just kinda Q & A thing.
 _______________________________________________________________________________
 
 Q: Why does slurm have themes?
 A: Because it can.
-
-Q: I want to use slurm to do traffic accounting or MRTG graphs ...
-A: slurm will not support this. Feel free to use the data gathering
-   code from src/. I've started a small project called wormulon
-   (http://www.wormulon.net/wormulon) which utilizes the slurm codebase
-   to create output suitable for inclusion in mrtg, rrdtool or even
-   the screen hardstatus line.
-
-Q: Can I include slurm into the screen hardstatus line?
-A: See previous question and have a look at wormulon.
 
 Q: WTF is 'slurm'? / How did it all start?
 A: The idea came up while installing Linux systems during a small
@@ -39,4 +28,3 @@ A: Linux does not have a common way to save media type an link information.
    would need suid root privileges on Linux which is normally a bad idea.
 
 _______________________________________________________________________________
-$Id: FAQ,v 1.3 2004/02/06 02:33:54 hscholz Exp $
