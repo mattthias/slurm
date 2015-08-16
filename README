@@ -22,7 +22,7 @@ slurm was tested on:
 Compiling:
  - Install cmake
    e.g.:
-    apt-get install cmake)
+    apt-get install cmake
  - Create a build directory
     mkdir _build
  - Run cmake to create the Makefiles
