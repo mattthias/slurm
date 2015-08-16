@@ -1,0 +1,22 @@
+From: Matthias Schmitz <matthias@sigxcpu.org>
+Date: Sun, 16 Aug 2015 21:24:18 +0200
+Subject: Fix empty lines in manpage
+
+---
+ slurm.1 | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/slurm.1 b/slurm.1
+index fe430aa..55ac03d 100644
+--- a/slurm.1
++++ b/slurm.1
+@@ -61,7 +61,7 @@ the source code documentation to see if your bug is really a bug.
+ Please report bugs at https://github.com/mattthias/slurm/issues
+ .Sh AUTHOR
+ Hendrik Scholz <hendrik@scholz.net>
+-
++.
+ Matthias Schmitz <matthias@sigxcpu.org>
+-
++.
+ https://github.com/mattthias/slurm
