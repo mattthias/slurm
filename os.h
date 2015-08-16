@@ -94,7 +94,6 @@
 #include <arpa/inet.h>
 #ifndef __DragonFly__
 #include <net/ppp_defs.h>
-#include <net/if_ppp.h>
 #endif
 #elif defined (__NetBSD__)            /* N E T B S D */
 #include <stdio.h>
