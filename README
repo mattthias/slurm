@@ -30,6 +30,10 @@ Compiling:
    cmake ..
  - Run make to build the binary
    make
+ - Install the program
+   sudo make install
+ - Try it!
+  slurm -i eth0 # or whatever your interface is
 
 Please report bugs and feature requests in the github bugtracker:
  website: https://github.com/mattthias/slurm
