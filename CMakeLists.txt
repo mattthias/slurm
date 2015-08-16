@@ -11,8 +11,6 @@ if (CURSES_HAVE_NCURSES_H)
   add_definitions(-D_HAVE_NCURSES)
 endif()
 
-add_definitions(-D__Debian__)
-
 set(SLURM_SOURCES slurm.c)
 
 add_executable(slurm ${SLURM_SOURCES})
