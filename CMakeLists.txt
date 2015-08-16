@@ -16,3 +16,7 @@ set(SLURM_SOURCES slurm.c)
 add_executable(slurm ${SLURM_SOURCES})
 
 target_link_libraries(slurm ncurses)
+
+# install
+install(TARGETS slurm DESTINATION bin)
+install(DIRECTORY themes/ DESTINATION share/slurm PATTERN "*.theme")
