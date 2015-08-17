@@ -1,4 +1,3 @@
-# use Gunnar Wolf's great github redirector service
 version=3
 opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/slurm-$1\.tar\.gz/ \
   https://github.com/mattthias/slurm/tags .*/upstream/v?(\d\S*)\.tar\.gz
