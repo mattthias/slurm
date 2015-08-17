@@ -1,3 +1,9 @@
+slurm (0.4.3-2) unstable; urgency=medium
+
+  * Fix broken debian/watch file.
+
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Mon, 17 Aug 2015 12:03:38 +0200
+
 slurm (0.4.3-1) unstable; urgency=medium
 
   * Import new upstream version 0.4.3
