@@ -21,10 +21,9 @@ int checkinterface()
 
     if (sysctl(mib_name, 6, NULL, &needed, NULL, 0) < 0)
         return FALSE;
-    if (alloc < (signed long) needed)
-    {
+    if (alloc < (signed long) needed) {
         if (buf != NULL)
-            free (buf);
+            free(buf);
         buf = malloc(needed);
         if (buf == NULL)
             return FALSE;
@@ -36,24 +35,21 @@ int checkinterface()
 
     lim = buf + needed;
     next = buf;
-    while ((next < lim) && (validinterface == 0))
-    {
-        ifm = (struct if_msghdr *)next;
+    while ((next < lim) && (validinterface == 0)) {
+        ifm = (struct if_msghdr *) next;
         if (ifm->ifm_type != RTM_IFINFO)
             return FALSE;
         next += ifm->ifm_msglen;
 
-        while (next < lim)
-        {
-            nextifm = (struct if_msghdr *)next;
+        while (next < lim) {
+            nextifm = (struct if_msghdr *) next;
             if (nextifm->ifm_type != RTM_NEWADDR)
                 break;
             next += nextifm->ifm_msglen;
         }
 
-        if (ifm->ifm_flags & IFF_UP)
-        {
-            sdl = (struct sockaddr_dl *)(ifm + 1);
+        if (ifm->ifm_flags & IFF_UP) {
+            sdl = (struct sockaddr_dl *) (ifm + 1);
             strncpy(s, sdl->sdl_data, sdl->sdl_nlen);
             s[sdl->sdl_nlen] = '\0';
             /* search for the right network interface */
@@ -61,10 +57,9 @@ int checkinterface()
                 continue;
             if (strcmp(s, ifdata.if_name) != 0)
                 continue;
-            else
-            {
+            else {
                 validinterface = TRUE;
-                break; /* stop searching */
+                break;          /* stop searching */
             }
         }
     }
@@ -93,38 +88,34 @@ int get_stat(void)
 
     if (sysctl(mib_name, 6, NULL, &needed, NULL, 0) < 0)
         return 1;
-    if (alloc < (signed long) needed)
-    {
+    if (alloc < (signed long) needed) {
         if (buf != NULL)
-            free (buf);
+            free(buf);
         buf = malloc(needed);
         if (buf == NULL)
             return 1;
         alloc = needed;
-        }
+    }
 
     if (sysctl(mib_name, 6, buf, &needed, NULL, 0) < 0)
         return 1;
     lim = buf + needed;
     next = buf;
-    while (next < lim)
-    {
-        ifm = (struct if_msghdr *)next;
+    while (next < lim) {
+        ifm = (struct if_msghdr *) next;
         if (ifm->ifm_type != RTM_IFINFO)
             return 1;
         next += ifm->ifm_msglen;
 
-        while (next < lim)
-        {
-            nextifm = (struct if_msghdr *)next;
+        while (next < lim) {
+            nextifm = (struct if_msghdr *) next;
             if (nextifm->ifm_type != RTM_NEWADDR)
                 break;
             next += nextifm->ifm_msglen;
         }
 
-        if (ifm->ifm_flags & IFF_UP)
-        {
-            sdl = (struct sockaddr_dl *)(ifm + 1);
+        if (ifm->ifm_flags & IFF_UP) {
+            sdl = (struct sockaddr_dl *) (ifm + 1);
             /* search for the right network interface */
             if (sdl->sdl_family != AF_LINK)
                 continue;
@@ -133,7 +124,8 @@ int get_stat(void)
             strncpy(s, sdl->sdl_data, sdl->sdl_nlen);
             s[sdl->sdl_nlen] = '\0';
 
-            rx_o = stats.rx_bytes; tx_o = stats.tx_bytes;
+            rx_o = stats.rx_bytes;
+            tx_o = stats.tx_bytes;
             /* write stats */
             stats.tx_packets = ifm->ifm_data.ifi_opackets;
             stats.rx_packets = ifm->ifm_data.ifi_ipackets;
