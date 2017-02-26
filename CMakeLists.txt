@@ -23,6 +23,7 @@ if (IS_REDHAT )
   add_definitions(-D_HAVE_NCURSES)
 endif()
 
+add_definitions(-D_HAVE_CHECKINTERFACE)
 add_executable(slurm ${SLURM_SOURCES})
 
 target_link_libraries(slurm ncurses)
