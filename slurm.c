@@ -1307,7 +1307,7 @@ int main(int argc, char *argv[])
     {
         fprintf(stderr, "specified device does not exist or cannot "
                 "be monitored!\n\nIf you think this is an error please report "
-                "it to <hendrik@scholz.net>. Thanks!\n");
+                "it to https://github.com/mattthias/slurm/issues . Thanks!\n");
 		exit(1);
     }
 
