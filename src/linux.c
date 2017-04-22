@@ -117,9 +117,9 @@ int get_default_interface(IfData * ifdata)
 
     struct ifreq ifr;
     unsigned int i;
+    unsigned int index;
     unsigned int iface_up = 0;
-    char iface_up_name[IFNAMSIZ];
-
+    int ret;
 
     /* Create a socket to ioctl on */
     int sk = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -130,29 +130,29 @@ int get_default_interface(IfData * ifdata)
     /* iterate over the array and .. */
     for (i = 0; ifs[i].if_index; i++) {
 
-        /* skip local loopback */
-        if (!strcmp(ifs[i].if_name, "lo")) {
-            continue;
-        }
-
-        /* write the name of the iface we want to check into the ifr struct and .. */
+        /* ..write the name of the iface we want to check into the ifr struct and .. */
         strncpy(ifr.ifr_name, ifs[i].if_name, IFNAMSIZ);
 
         /* .. perform an ioctl SIOCGIFFLAGS to get the iface flags */
-        ioctl(sk, SIOCGIFFLAGS, &ifr);
+        ret = ioctl(sk, SIOCGIFFLAGS, &ifr);
+        if (ret < 0)
+            return ret;
 
-        /* check if the iface is up (IFF_UP is set) */
-        if (ifr.ifr_flags & IFF_UP) {
+        if (ifr.ifr_flags & IFF_LOOPBACK) {     /* skip local loopback */
+            continue;
+        } else if (ifr.ifr_flags & IFF_UP) {    /* check if the iface is up (IFF_UP is set) */
             iface_up++;
-            strncpy(iface_up_name, ifr.ifr_name, IFNAMSIZ);
+            index = i;          /* save the index to get the iface name later */
         }
     }
 
     if (iface_up == 1) {
-        snprintf((char *) ifdata->if_name,
-                 (size_t) sizeof(ifdata->if_name), "%s", iface_up_name);
-        return (0);
+        strncpy(ifdata->if_name, ifs[index].if_name,
+                sizeof(ifdata->if_name));
+        ret = 0;
+    } else {
+        ret = -1;
     }
 
-    return (2);
+    return ret;
 }

@@ -1263,7 +1263,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "specified device does not exist or cannot "
                 "be monitored!\n\nIf you think this is an error please report "
                 "it to https://github.com/mattthias/slurm/issues . Thanks!\n");
-		exit(1);
+        exit(1);
     }
 
     /* Initialize some info variables */
