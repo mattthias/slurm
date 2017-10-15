@@ -1240,14 +1240,30 @@ int main(int argc, char *argv[])
         }
     }
 
-    if (strlen(ifdata.if_name) == 0)
+    if (strlen(ifdata.if_name) == 0) {
+#ifdef __linux__
+        /* If no interface was given as option make an educated guess for a default interface */
+        int rv = get_default_interface(&ifdata);
+        if (rv == 0) {
+            validinterface = checkinterface();
+        } else {
+            fprintf(stderr,
+                    "\nNo network interface given on command line and auto-detect failed.\n"
+                    "Please specify a network interface using \"-i <iface>\".\n\n",
+                    REFRESH_MIN, REFRESH_MAX);
+            usage(1, argv);
+
+        }
+#else
         usage(1, argv);
+#endif
+    }
 
     if (!validinterface) {
         fprintf(stderr, "specified device does not exist or cannot "
                 "be monitored!\n\nIf you think this is an error please report "
                 "it to https://github.com/mattthias/slurm/issues . Thanks!\n");
-		exit(1);
+        exit(1);
     }
 
     /* Initialize some info variables */

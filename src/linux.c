@@ -99,3 +99,60 @@ int get_stat(void)
     }
     return (interfacefound == 1) ? 0 : 1;
 }
+
+
+/*****************************************************************************
+ *
+ *  get_default_interface()
+ *
+ *  If only one non local interface is up use that as default
+ *
+ ****************************************************************************/
+int get_default_interface(IfData * ifdata)
+{
+
+
+    struct if_nameindex *ifs;
+    ifs = if_nameindex();
+
+    struct ifreq ifr;
+    unsigned int i;
+    unsigned int index;
+    unsigned int iface_up = 0;
+    int ret;
+
+    /* Create a socket to ioctl on */
+    int sk = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP);
+
+    /* get an array of if_nameindex structs (one for each iface) */
+    ifs = if_nameindex();
+
+    /* iterate over the array and .. */
+    for (i = 0; ifs[i].if_index; i++) {
+
+        /* ..write the name of the iface we want to check into the ifr struct and .. */
+        strncpy(ifr.ifr_name, ifs[i].if_name, IFNAMSIZ);
+
+        /* .. perform an ioctl SIOCGIFFLAGS to get the iface flags */
+        ret = ioctl(sk, SIOCGIFFLAGS, &ifr);
+        if (ret < 0)
+            return ret;
+
+        if (ifr.ifr_flags & IFF_LOOPBACK) {     /* skip local loopback */
+            continue;
+        } else if (ifr.ifr_flags & IFF_UP) {    /* check if the iface is up (IFF_UP is set) */
+            iface_up++;
+            index = i;          /* save the index to get the iface name later */
+        }
+    }
+
+    if (iface_up == 1) {
+        strncpy(ifdata->if_name, ifs[index].if_name,
+                sizeof(ifdata->if_name));
+        ret = 0;
+    } else {
+        ret = -1;
+    }
+
+    return ret;
+}
