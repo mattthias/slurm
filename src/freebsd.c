@@ -19,9 +19,9 @@ int checkinterface(void)
     struct ifmibdata ifmd;
 
     len = sizeof(num_iface);
-    sysctlbyname("net.link.generic.system.ifcount", &num_iface, &len, NULL, 0);
-    for (i=1; i <= num_iface; i++)
-    {   
+    sysctlbyname("net.link.generic.system.ifcount", &num_iface, &len, NULL,
+                 0);
+    for (i = 1; i <= num_iface; i++) {
         name[0] = CTL_NET;
         name[1] = PF_LINK;
         name[2] = NETLINK_GENERIC;
@@ -31,8 +31,7 @@ int checkinterface(void)
 
         len = sizeof(ifmd);
         sysctl(name, 6, &ifmd, &len, NULL, 0);
-        if (strcmp(ifmd.ifmd_name, (char *)ifdata.if_name) == 0)
-        {   
+        if (strcmp(ifmd.ifmd_name, (char *) ifdata.if_name) == 0) {
             /*
              * now we have an interface and just have to see if it's up
              * in case we just want to debug media types we disable
@@ -42,7 +41,7 @@ int checkinterface(void)
             if (ifmd.ifmd_flags & IFF_UP)
 #endif
                 validinterface = TRUE;
-            break; /* in any case we can stop searching here */
+            break;              /* in any case we can stop searching here */
         }
     }
     return validinterface;
@@ -71,13 +70,11 @@ int get_stat(void)
     static int dev_opened = 0;
     unsigned long rx_o, tx_o;
 
-    if (!dev_opened)
-    {   
+    if (!dev_opened) {
         len = sizeof(num_iface);
         sysctlbyname("net.link.generic.system.ifcount", &num_iface, &len,
-                        NULL, 0);
-        for (i=1; i <= num_iface; i++)
-        {   
+                     NULL, 0);
+        for (i = 1; i <= num_iface; i++) {
             name[0] = CTL_NET;
             name[1] = PF_LINK;
             name[2] = NETLINK_GENERIC;
@@ -87,8 +84,7 @@ int get_stat(void)
 
             len = sizeof(ifmd);
             sysctl(name, 6, &ifmd, &len, NULL, 0);
-            if (strcmp(ifmd.ifmd_name, (char *)ifdata.if_name) == 0)
-            {   
+            if (strcmp(ifmd.ifmd_name, (char *) ifdata.if_name) == 0) {
                 /* got the right interface */
                 watchif = i;
                 dev_opened++;
@@ -106,7 +102,8 @@ int get_stat(void)
     len = sizeof(ifmd);
     sysctl(name, 6, &ifmd, &len, NULL, 0);
 
-    rx_o = stats.rx_bytes; tx_o = stats.tx_bytes;
+    rx_o = stats.rx_bytes;
+    tx_o = stats.tx_bytes;
 
     stats.tx_packets = ifmd.ifmd_data.ifi_opackets;
     stats.rx_packets = ifmd.ifmd_data.ifi_ipackets;

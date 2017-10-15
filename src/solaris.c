@@ -17,21 +17,18 @@ int checkinterface()
     struct ifreq ifr, *ifrp;
     struct ifconf ifc;
 
-    if((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0)
-    {   
+    if ((sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0) {
         perror("socket");
         return FALSE;
     }
-    if (ioctl(sockfd, SIOCGIFNUM, (char *) &numifs) < 0)
-    {   
+    if (ioctl(sockfd, SIOCGIFNUM, (char *) &numifs) < 0) {
         perror("SIOCGIFNUM");
         close(sockfd);
         return FALSE;
     }
     bufsize = ((size_t) numifs) * sizeof(struct ifreq);
     buf = (char *) malloc(bufsize);
-    if (!buf)
-    {   
+    if (!buf) {
         perror("malloc");
         close(sockfd);
         return FALSE;
@@ -40,8 +37,7 @@ int checkinterface()
     ifc.ifc_len = bufsize;
     ifc.ifc_buf = buf;
 
-    if (ioctl(sockfd, SIOCGIFCONF, (char *) &ifc) < 0)
-    {   
+    if (ioctl(sockfd, SIOCGIFCONF, (char *) &ifc) < 0) {
         perror("SIOCGIFCONF");
         close(sockfd);
         free(buf);
@@ -51,20 +47,18 @@ int checkinterface()
     ifrp = ifc.ifc_req;
     numifreqs = ifc.ifc_len / sizeof(struct ifreq);
 
-    for (i = 0; i < numifreqs; i++, ifrp++)
-    {
-        memset((char *)&ifr, 0, sizeof(ifr));
+    for (i = 0; i < numifreqs; i++, ifrp++) {
+        memset((char *) &ifr, 0, sizeof(ifr));
         strncpy(ifr.ifr_name, ifrp->ifr_name, sizeof(ifr.ifr_name));
         /* do not check for loopback device as it cannot be monitored */
         if (!strncmp(ifr.ifr_name, "lo", 2))
             continue;
-        if (ioctl(sockfd, SIOCGIFFLAGS, &ifr) < 0)
-        {   
+        if (ioctl(sockfd, SIOCGIFFLAGS, &ifr) < 0) {
             perror("SIOCGIFFLAGS");
             continue;
         }
-        if (!strcmp(ifdata.if_name, ifr.ifr_name) && (ifr.ifr_flags & IFF_UP))
-        {
+        if (!strcmp(ifdata.if_name, ifr.ifr_name)
+            && (ifr.ifr_flags & IFF_UP)) {
             validinterface = TRUE;
             break;
         }
@@ -91,33 +85,32 @@ int get_stat(void)
     kstat_ctl_t *kc;
     unsigned long rx_o, tx_o;
 
-    if ((kc = kstat_open()) == NULL)
-    {   
+    if ((kc = kstat_open()) == NULL) {
         perror("kstat_open()");
         return 1;
     }
 
-    rx_o = stats.rx_bytes; tx_o = stats.tx_bytes;
+    rx_o = stats.rx_bytes;
+    tx_o = stats.tx_bytes;
 
     ksp = kstat_lookup(kc, NULL, -1, ifdata.if_name);
-    if (ksp && kstat_read(kc, ksp, NULL) >= 0)
-    {   
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "opackets");
+    if (ksp && kstat_read(kc, ksp, NULL) >= 0) {
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "opackets");
         if (knp)
             stats.tx_packets = knp->value.ui32;
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "ipackets");
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "ipackets");
         if (knp)
             stats.rx_packets = knp->value.ui32;
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "obytes");
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "obytes");
         if (knp)
             stats.tx_bytes = knp->value.ui32;
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "rbytes");
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "rbytes");
         if (knp)
             stats.rx_bytes = knp->value.ui32;
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "oerrors");
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "oerrors");
         if (knp)
             stats.tx_errors = knp->value.ui32;
-        knp = (kstat_named_t *)kstat_data_lookup(ksp, "ierrors");
+        knp = (kstat_named_t *) kstat_data_lookup(ksp, "ierrors");
         if (knp)
             stats.rx_errors = knp->value.ui32;
     }
