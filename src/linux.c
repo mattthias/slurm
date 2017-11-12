@@ -42,7 +42,6 @@ int checkinterface(void)
 
 int get_stat(void)
 {
-    static int opened = 0;
     char buffer[BUFSIZE];
     char *ptr;
     char *devname;
@@ -50,13 +49,12 @@ int get_stat(void)
     int interfacefound;
     unsigned long rx_o, tx_o;
 
-    if (opened != 1) {
+    if (proc_net_dev == NULL) {
         if ((proc_net_dev = fopen(PATH_NET_DEV, "r")) == NULL) {
             fprintf(stderr, "cannot open %s!\nnot running Linux?\n",
                     PATH_NET_DEV);
             exit(1);
         }
-        opened++;
     }
 
     /* backup old rx/tx values */
