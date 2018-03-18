@@ -9,3 +9,4 @@ config.status
 autom4te.cache
 .deps
 stamp-h1
+_build/
