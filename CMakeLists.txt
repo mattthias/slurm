@@ -18,8 +18,8 @@ set(SLURM_SOURCES slurm.c)
 # curses. Thats bad for us so we set asume that we have ncurses when the os is
 # some RedHat like
 execute_process(COMMAND /bin/ls /etc/redhat-release OUTPUT_VARIABLE IS_REDHAT ERROR_QUIET)
-if (IS_REDHAT )
-  MESSAGE( STATUS "RedHat's cmake ist to old (FindCurse is somewhat broken) so we set _HAVE_NCURSES by hand.")
+if (IS_REDHAT)
+  MESSAGE( STATUS "RedHat's cmake is too old (Incompatible distribution of FindCurse); Manually setting _HAVE_NCURSES")
   add_definitions(-D_HAVE_NCURSES)
 endif()
 
