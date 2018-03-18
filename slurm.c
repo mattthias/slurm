@@ -1325,7 +1325,7 @@ int main(int argc, char *argv[])
 #endif
 
 #ifndef NO_CURSES_E
-    printf("\e(U");
+    printf("\x1B(U");
 #endif
 
 
