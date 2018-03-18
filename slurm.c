@@ -1144,7 +1144,6 @@ int main(int argc, char *argv[])
 {
     short int key_pressed;
     int sec_value = 0;
-    int min_value = 0;
     int validinterface = 0;
     int displaymode = MODE_SPLIT;
     int modechange = 0;
@@ -1410,7 +1409,6 @@ int main(int argc, char *argv[])
 
         if ((!sec_value && first) || disconnected) {
             sec_value = stats.online_sec;
-            min_value = stats.online_min;
             update_stat(displaymode);
             first = 0;
             disconnected = 0;
