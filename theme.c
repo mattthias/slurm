@@ -180,7 +180,7 @@ int theme_mapattrib(char *str)
 {
     int val = COL_BOLD;
     char buf[32];
-    int i;
+    unsigned int i;
 
     if (strlen(str) > 31)
         return val;
@@ -211,7 +211,7 @@ int theme_mapcolor(char *str)
 {
     int val = COLOR_GREEN;
     char buf[32];
-    int i;
+    unsigned int i;
 
     if (strlen(str) > 31)
         return val;
@@ -254,7 +254,7 @@ int theme_mapkey(char *str)
 {
     int e = 0;
     char buf[32];
-    int i;
+    unsigned int i;
 
     if (strlen(str) > 31)
         return e;
