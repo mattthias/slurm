@@ -43,6 +43,15 @@
 #define MODE_SPLIT 2
 #define MODE_LARGE 3
 
+#if __GNUC__ >= 2
+#define UNUSED_ARG(ARG) ARG __attribute__((unused))
+#elif defined(S_SPLINT_S)
+#define UNUSED_ARG(ARG) /*@unused@*/ ARG
+#define const /*@observer@*/ /*@temp@*/
+#else
+#define UNUSED_ARG(ARG) ARG
+#endif
+
 /* slap HPUX with a large trout
  * HPUX 10.xx cannot handle 2^32 int constants, so we have to "tweak" it
  */

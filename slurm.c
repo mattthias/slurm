@@ -254,7 +254,6 @@ void led_off(unsigned int who)
 
 int update_stat_large(void)
 {
-    float sumspeed;
     float rxspeed;
     float txspeed;
     int i = 0, x, y;
@@ -312,9 +311,6 @@ int update_stat_large(void)
         stats.rx_bytes_comp = 0;
     if (stats.tx_bytes_comp > stats.tx_bytes)
         stats.tx_bytes_comp = 0;
-
-    sumspeed = ((stats.rx_bytes - stats.rx_bytes_comp) +
-                (stats.tx_bytes - stats.tx_bytes_comp)) / refreshdelay;
 
     rxspeed = (stats.rx_bytes - stats.rx_bytes_comp) / refreshdelay;
     txspeed = (stats.tx_bytes - stats.tx_bytes_comp) / refreshdelay;
@@ -528,7 +524,6 @@ int update_stat_large(void)
 
 int update_stat_split(void)
 {
-    float sumspeed;
     float rxspeed;
     float txspeed;
     int i = 0, x, y;
@@ -586,9 +581,6 @@ int update_stat_split(void)
         stats.rx_bytes_comp = SNMPMAXBYTES - stats.rx_bytes_comp;
     if (stats.tx_bytes_comp > stats.tx_bytes)
         stats.tx_bytes_comp = SNMPMAXBYTES - stats.tx_bytes_comp;
-
-    sumspeed = ((stats.rx_bytes - stats.rx_bytes_comp) +
-                (stats.tx_bytes - stats.tx_bytes_comp)) / refreshdelay;
 
     rxspeed = (stats.rx_bytes - stats.rx_bytes_comp) / refreshdelay;
     txspeed = (stats.tx_bytes - stats.tx_bytes_comp) / refreshdelay;
@@ -1151,10 +1143,8 @@ void draw_face(int displaymode, char *hostname)
 int main(int argc, char *argv[])
 {
     short int key_pressed;
-    long now, old[2];
     int sec_value = 0;
     int min_value = 0;
-    int reload = FALSE;
     int validinterface = 0;
     int displaymode = MODE_SPLIT;
     int modechange = 0;
@@ -1372,7 +1362,7 @@ int main(int argc, char *argv[])
                               COL_BOLD) ? A_BOLD : A_NORMAL));
 
     /* curses is set up so make sure to shut it down correctly when
-     * receiving termination signals by calling slurm_shutdown()    
+     * receiving termination signals by calling slurm_shutdown()
      */
 
     signal(SIGHUP, slurm_shutdown);
@@ -1383,15 +1373,13 @@ int main(int argc, char *argv[])
 
     draw_face(displaymode, hostname);
     update_info(displaymode);
-    now = time(NULL);
-    old[0] = old[1] = time(NULL) - 3;
 
     for (;;) {
         get_stat();
 #ifdef WITH_LED
         if (ledenabled) {
             if (displaymode != MODE_LARGE) {
-                /* In case of a new RX Packet... the RX Led Turn on 
+                /* In case of a new RX Packet... the RX Led Turn on
                  * Else... Turn off */
                 if (stats.rx_packets != stats.rx_packets_led)
                     led_on(LED_RX);
@@ -1428,8 +1416,6 @@ int main(int argc, char *argv[])
             first = 0;
             disconnected = 0;
         }
-
-        now = time(NULL);
 
         if (stats.online_sec != sec_value) {
             update_stat(displaymode);
@@ -1471,11 +1457,9 @@ int main(int argc, char *argv[])
         } else if (key_pressed != ERR && tolower(key_pressed) == 'r') {
             draw_face(displaymode, hostname);
             update_stat(displaymode);
-            reload = TRUE;
         } else if (key_pressed != ERR && tolower(key_pressed) == 'z') {
             zero_stats();
             update_stat(displaymode);
-            reload = TRUE;
         }
 
         /* if the display mode change we need to redraw the face and
@@ -1548,7 +1532,7 @@ void zero_stats(void)
  *
  *****************************************************************************/
 
-void slurm_shutdown(int sig)
+void slurm_shutdown(UNUSED_ARG(int sig))
 {
     endwin();
     system("clear");
