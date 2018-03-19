@@ -297,9 +297,8 @@ int get_if_speed(char *ifstring)
     return speed;
 }
 #else
-int get_if_speed(char *ifstring)
+int get_if_speed(UNUSED_ARG(char *ifstring))
 {
-    ifstring++;                 /* ugly hack to prevent compiler warning on Linux */
     return ERR_IFACE_NO_SPEED;
 }
 #endif
