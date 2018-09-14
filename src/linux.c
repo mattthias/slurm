@@ -65,11 +65,11 @@ int get_stat(void)
 
     /* do not parse the first two lines as they only contain static garbage */
     fseek(proc_net_dev, 0, SEEK_SET);
-    fgets(buffer, BUFSIZ - 1, proc_net_dev);
-    fgets(buffer, BUFSIZ - 1, proc_net_dev);
+    fgets(buffer, BUFSIZE - 1, proc_net_dev);
+    fgets(buffer, BUFSIZE - 1, proc_net_dev);
 
     interfacefound = 0;
-    while (fgets(buffer, BUFSIZ - 1, proc_net_dev) != NULL) {
+    while (fgets(buffer, BUFSIZE - 1, proc_net_dev) != NULL) {
         /* find the device name and substitute ':' with '\0' */
         ptr = buffer;
         while (*ptr == ' ')
