@@ -1249,8 +1249,7 @@ int main(int argc, char *argv[])
         } else {
             fprintf(stderr,
                     "\nNo network interface given on command line and auto-detect failed.\n"
-                    "Please specify a network interface using \"-i <iface>\".\n\n",
-                    REFRESH_MIN, REFRESH_MAX);
+                    "Please specify a network interface using \"-i <iface>\".\n\n");
             usage(1, argv);
 
         }
