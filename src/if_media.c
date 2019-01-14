@@ -26,6 +26,10 @@
 #endif
 #endif
 
+#if defined(__linux__)
+#include <linux/sockios.h>
+#include <linux/ethtool.h>
+#endif
 
 
 /******************************************************************************
@@ -295,6 +299,39 @@ int get_if_speed(char *ifstring)
     kstat_close(kc);
 
     return speed;
+}
+#elif defined(__linux__)
+int get_if_speed(char *ifstring)
+{
+    int sock;
+    struct ifreq ifr;
+    struct ethtool_cmd edata;
+    int rc;
+
+    sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_IP);
+    if (sock < 0) {
+        fprintf(stderr, "cannot create socket to guess interface speed");
+        return -1;
+    }
+
+    strncpy(ifr.ifr_name, ifstring, sizeof(ifr.ifr_name));
+    ifr.ifr_data = (void *)&edata;
+
+    edata.cmd = ETHTOOL_GSET;
+
+    rc = ioctl(sock, SIOCETHTOOL, &ifr);
+    if (rc < 0) {
+        fprintf(stderr, "failed to guess interface speed");
+        return -1;
+    }
+    switch (ethtool_cmd_speed(&edata)) {
+    case SPEED_10: return 10*1000;
+    case SPEED_100: return 100*1000;
+    case SPEED_1000: return 1000*1000;
+    case SPEED_2500: return 2500*1000;
+    case SPEED_10000: return 10000*1000;
+    default: return edata.speed*1000;
+    }
 }
 #else
 int get_if_speed(char *ifstring)

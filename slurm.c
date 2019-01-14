@@ -1300,7 +1300,7 @@ int main(int argc, char *argv[])
      * if the speed could not determined due to errors or lack of
      * this feature on the host operating system
      */
-#if defined(_HAVE_BSD) || defined(__HPUX__) || defined(__Solaris__) || defined(__APPLE__)
+#if defined(_HAVE_BSD) || defined(__HPUX__) || defined(__Solaris__) || defined(__APPLE__) || defined(__linux__)
     ifdata.if_speed = get_if_speed(ifdata.if_name);
 
     /* if ERR_IFACE_NO_SPEED we could not determine the interface speed
