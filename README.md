@@ -12,7 +12,7 @@ HP-UX and Solaris.
  - curses ascii graphics
  - ascii theme support
 
-slurm was tested on:
+## slurm was tested on:
  - Debian GNU/Linux 8.0
  - FreeBSD 10
  - CentOS 6/7
