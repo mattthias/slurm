@@ -1,11 +1,11 @@
 # slurm - yet another network load monitor
 
 slurm started as a FreeBSD port of the Linux ppp link monitor called pppstatus
-by Gabriel Montenegro. Hendrik Scholz ripped of the ppp dependent parts and the
-email checks to turn in into a generic network load monitor for *BSD, Linux,
+by Gabriel Montenegro. Hendrik Scholz ripped off the ppp dependent parts and the
+email checks to turn it into a generic network load monitor for *BSD, Linux,
 HP-UX and Solaris.
 
-## features:
+## Features:
  - "realtime" traffic statistics
  - three graph modes: combined RX and TX and two split views
  - can monitor any network device
