@@ -194,8 +194,8 @@
 #include <netinet/in.h>
 #include <net/if.h>
 #include <arpa/inet.h>
-#include <net/ppp_defs.h>
-#include <net/if_ppp.h>
+#include <linux/ppp_defs.h>
+#include <linux/if_ppp.h>
 #elif defined (__Solaris__)           /* S O L A R I S */
 #include <stdio.h>
 #define NO_CURSES_E	1
