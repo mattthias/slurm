@@ -26,7 +26,7 @@ endif()
 add_definitions(-D_HAVE_CHECKINTERFACE)
 add_executable(slurm ${SLURM_SOURCES})
 
-target_link_libraries(slurm ncurses)
+target_link_libraries(slurm ${CURSES_LIBRARY} ${CURSES_EXTRA_LIBRARY})
 
 # install
 install(TARGETS slurm DESTINATION bin)
