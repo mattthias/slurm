@@ -6,6 +6,7 @@ email checks to turn it into a generic network load monitor for *BSD, Linux,
 HP-UX and Solaris.
 
 ## Features:
+
  - "realtime" traffic statistics
  - three graph modes: combined RX and TX and two split views
  - can monitor any network device
@@ -13,12 +14,15 @@ HP-UX and Solaris.
  - ascii theme support
 
 ## Tested on:
+
  - Debian GNU/Linux 8.0
  - FreeBSD 10
  - CentOS 6/7
 
 ## Compiling:
+
  - Install cmake and libncurses5-dev e.g.:
+
    - Debian (if you don't want to use the Debian package of slurm)
 
          apt-get install build-essential
@@ -32,20 +36,19 @@ HP-UX and Solaris.
  - Create a build directory
 
         mkdir _build
-        
+
  - Run cmake to create the Makefiles
 
         cd _build/
         cmake ..
-        
+
  - Run make to build the binary
 
         make
-        
  - Install the program
 
         sudo make install
-        
+
  - Try it!
 
         slurm -i eth0 # or whatever your interface is
