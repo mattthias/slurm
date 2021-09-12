@@ -42,7 +42,7 @@ int checkinterface(void)
 
 int get_stat(void)
 {
-    char buffer[BUFSIZE];
+    char buffer[BUFSIZ];
     char *ptr;
     char *devname;
     unsigned long dump;
