@@ -38,6 +38,15 @@ or on FreeBSD 12
 
         pkg install meson pkgconf ncurses
 
+or on Alpine Linux
+
+       apk add gcc musl-dev pkgconf meson ncurses-dev linux-headers
+
+or on OpenBSD 6.9
+
+       pkg_add meson
+       # some patches to the code are necessary...
+
  - Setup a build directory
 
         meson setup _build
