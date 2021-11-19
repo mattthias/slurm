@@ -9,4 +9,6 @@ executable('slurm', 'slurm.c', dependencies: ncurses_dep, install:true )
 
 # install manpage and theme files
 install_man('slurm.1')
-install_subdir('themes', install_dir:  get_option('datadir') / 'slurm')
+install_subdir('themes',
+               install_dir: get_option('datadir') / 'slurm',
+               strip_directory: true)

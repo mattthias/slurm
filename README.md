@@ -13,34 +13,44 @@ HP-UX and Solaris.
  - ascii theme support
 
 ## slurm was tested on:
- - Debian GNU/Linux 8.0
- - FreeBSD 10
- - CentOS 6/7
+ - Debian GNU/Linux 10/11 (buster/bullseye)
+ - FreeBSD 12
+ - CentOS 7/8
 
 ## Compiling:
- - Install cmake and libncurses5-dev e.g.:
+ - Install meson and libncurses6-dev e.g.:
 on Debian (if you don't want to use the Debian package of slurm)
 
-         apt-get install build-essential
-         apt-get install cmake libncurses5-dev
+         sudo apt install build-essential meson libncurses6-dev
+
 or on CentOS / RedHat
 
-        yum groupinstall 'Development Tools'
-        yum install cmake ncurses-devel
+        # Add EPEL on CentOS 7
+        sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
- - Create a build directory
+        # Enable PowerTools repo in CentOS 8
+        sudo dnf config-manager --set-enabled powertools
 
-        mkdir _build
- - Run cmake to create the Makefiles
+        sudo yum groupinstall 'Development Tools'
+        sudo yum install meson ncurses-devel
+
+or on FreeBSD 12
+
+        pkg install meson pkgconf ncurses
+
+ - Setup a build directory
+
+        meson setup _build
+
+ - Run meson to build
 
         cd _build/
-        cmake ..
- - Run make to build the binary
+        meson compile
 
-        make
  - Install the program
 
-        sudo make install
+        sudo meson install
+
  - Try it!
 
         slurm -i eth0 # or whatever your interface is
