@@ -159,6 +159,7 @@ int get_if_speed(char *ifstring)
             break;
         }                       /* end switch physical */
         break;
+#ifdef IFM_FDDI
         /* FDDI interfaces */
         /* fpa doesn't seem to support SIOCGIFMEDIA on FreeBSD
          * so we won't get here but anyway ...
@@ -174,6 +175,7 @@ int get_if_speed(char *ifstring)
             speed = ERR_IFACE_NO_SPEED;
         }
         break;
+#endif
 #if WIRELESS
         /* IEEE 802.11 wireless interfaces */
     case IFM_IEEE80211:
