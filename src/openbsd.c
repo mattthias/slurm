@@ -119,7 +119,7 @@ int get_stat(void)
             /* search for the right network interface */
             if (sdl->sdl_family != AF_LINK)
                 continue;
-            if (strcmp(sdl->sdl_data, ifdata.if_name) != 0)
+            if (strncmp(sdl->sdl_data, ifdata.if_name, sdl->sdl_nlen) != 0)
                 continue;
             strncpy(s, sdl->sdl_data, sdl->sdl_nlen);
             s[sdl->sdl_nlen] = '\0';

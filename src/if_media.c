@@ -55,7 +55,7 @@ int get_if_speed(char *ifstring)
     int speed = ERR_IFACE_NO_SPEED;
     int s;                      /* socket */
     struct ifmediareq ifmr;
-    int *media_list;
+    uint64_t *media_list;
     int type, physical;
 
     if ((s = socket(AF_INET, SOCK_DGRAM, 0)) == -1) {
@@ -77,7 +77,7 @@ int get_if_speed(char *ifstring)
         return ERR_IFACE_NO_SPEED;
     }
 
-    media_list = (int *) malloc(ifmr.ifm_count * sizeof(int));
+    media_list = (uint64_t *) malloc(ifmr.ifm_count * sizeof(uint64_t));
     if (media_list == NULL)
         fprintf(stderr, "malloc() error in if_media.c\n");
     ifmr.ifm_ulist = media_list;
@@ -96,8 +96,16 @@ int get_if_speed(char *ifstring)
      *
      */
 
+#ifdef IFM_TYPE
+    type = IFM_TYPE(ifmr.ifm_active);
+#else
     type = ifmr.ifm_active & 0xf0;
+#endif
+#ifdef IFM_TYPE
+    physical = IFM_SUBTYPE(ifmr.ifm_active);
+#else
     physical = ifmr.ifm_active & 0x0f;
+#endif
 
 #ifdef MEDIADEBUG
     printf("      all: %6d\n", ifmr.ifm_current);
@@ -184,7 +192,8 @@ int get_if_speed(char *ifstring)
 #endif
 #if WIRELESS && \
 	(defined(__FreeBSD__) && (__FreeBSD_version >= 500111)) || \
-	(defined(__NetBSD__) && (__NetBSD_Version_ > 106020000))
+	(defined(__NetBSD__) && (__NetBSD_Version_ > 106020000)) || \
+        defined(__OpenBSD__)
         case IFM_IEEE80211_OFDM6:
             speed = 6 * 1000;
             break;
