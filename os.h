@@ -41,6 +41,8 @@
 #define _HAVE_CHECKINTERFACE
 #elif defined (__Solaris__)
 #define _HAVE_CHECKINTERFACE
+#elif defined (__linux__)
+#define _HAVE_CHECKINTERFACE
 #endif
 
 #ifdef __HPUX__             /* H P U X */
