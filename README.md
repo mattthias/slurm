@@ -19,6 +19,7 @@ HP-UX and Solaris.
 
 ## Compiling:
  - Install meson and libncurses6-dev e.g.:
+
 on Debian (if you don't want to use the Debian package of slurm)
 
          sudo apt install build-essential meson libncurses6-dev
@@ -45,7 +46,6 @@ or on Alpine Linux
 or on OpenBSD 6.9
 
        pkg_add meson
-       # some patches to the code are necessary...
 
  - Setup a build directory
 
