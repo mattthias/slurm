@@ -64,7 +64,7 @@ jobs:
 
     - run: |
        sudo apt update
-       sudo apt install meson -y
+       sudo apt install meson libncurses-dev -y
        meson setup _codeql
        cd _codeql && meson compile
 
