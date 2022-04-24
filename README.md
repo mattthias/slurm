@@ -5,6 +5,8 @@ by Gabriel Montenegro. Hendrik Scholz ripped off the ppp dependent parts and the
 email checks to turn it into a generic network load monitor for *BSD, Linux,
 HP-UX and Solaris.
 
+<img src="https://raw.github.com/mattthias/slurm/upstream/slurm_termcast.svg">
+
 ## Features:
  - "realtime" traffic statistics
  - three graph modes: combined RX and TX and two split views
