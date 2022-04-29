@@ -1,3 +1,13 @@
+2022-04-29 Matthias Schmitz <matthias@sigxcpu.org>
+	* tag version 0.4.4
+	* Use meson to build
+	* Add interface detection for Linux:
+	  slurm defaults now to the only non-loopback and up interface.
+	  If more than one interface up it quits with a warning.
+	* Increase the maximum length of an interface name to match the length
+	  of newer Linux kernels.
+	* Make slurm work again on FreeBSD, OpenBSD and MacOS
+
 2015-08-16 Matthias Schmitz <matthias@sigxcpu.org>
 	* tag version 0.4.3
 	* switch to cmake as build system

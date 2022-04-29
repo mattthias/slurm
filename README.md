@@ -16,8 +16,10 @@ HP-UX and Solaris.
 
 ## slurm was tested on:
  - Debian GNU/Linux 10/11 (buster/bullseye)
- - FreeBSD 12
  - CentOS 7/8
+ - FreeBSD 12
+ - OpenBSD 6.9
+ - MacOS 12 (Monterey)
 
 ## Compiling:
  - Install meson and libncurses6-dev e.g.:
