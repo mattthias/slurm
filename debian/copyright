@@ -1,4 +1,4 @@
-Format: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=174&view=co
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: slurm
 Source: https://github.com/mattthias/slurm
 
@@ -10,7 +10,7 @@ License: GPL-2+
 Files: debian/* 
 Copyright: 2004, Fabian Franz <debian@fabian-franz.de>
            2007, Frank Lichtenheld <djpig@debian.org>
-	   2010, Matthias Schmitz <matthias@sigxcpu.org>
+	   2010,2022 Matthias Schmitz <matthias@sigxcpu.org>
 License: GPL-2+
 
 License: GPL-2+
