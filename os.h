@@ -18,7 +18,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307,
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301,
  * USA.
  *
  *****************************************************************************/
@@ -40,6 +40,8 @@
 #elif defined (__HPUX__)
 #define _HAVE_CHECKINTERFACE
 #elif defined (__Solaris__)
+#define _HAVE_CHECKINTERFACE
+#elif defined (__linux__)
 #define _HAVE_CHECKINTERFACE
 #endif
 
@@ -177,7 +179,6 @@
 #elif defined (__linux__)             /* L I N U X */
 #include <stdio.h>
 #include <sys/param.h>
-#include <sys/sysctl.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
@@ -195,8 +196,8 @@
 #include <netinet/in.h>
 #include <net/if.h>
 #include <arpa/inet.h>
-#include <net/ppp_defs.h>
-#include <net/if_ppp.h>
+#include <linux/ppp_defs.h>
+#include <linux/if_ppp.h>
 #elif defined (__Solaris__)           /* S O L A R I S */
 #include <stdio.h>
 #define NO_CURSES_E	1
