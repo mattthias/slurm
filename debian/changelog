@@ -60,9 +60,9 @@ slurm (0.4.0-1) unstable; urgency=low
 slurm (0.3.3-2) unstable; urgency=low
 
   * New maintainer (Closes: #482401)
-  * Switch to dpkg-source 3.0 (quilt) format 
+  * Switch to dpkg-source 3.0 (quilt) format
   * Create debian/patches/ for all modification on upstream files
-  * Add debian/watch 
+  * Add debian/watch
   * Added vcs-git / vcs-browser to debian/control
   * debian/copyright refers now GPL-2 instead of GPL
   * Bump Standards-Version to 3.8.4
@@ -96,4 +96,3 @@ slurm (0.3.2-1) unstable; urgency=low
   * Initial Release. (Closes: #229663)
 
  -- Fabian Franz <debian@fabian-franz.de>  Sun, 25 Jan 2004 21:06:14 +0100
-

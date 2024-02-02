@@ -16,8 +16,8 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Realtime network interface monitor
  Slurm has the following features:
-  * realtime traffic statistics divided into incoming and outgoing 
-  * optional combined view 
-  * can monitor any kind of network interface 
-  * shows detailed statistics about the interface. 
+  * realtime traffic statistics divided into incoming and outgoing
+  * optional combined view
+  * can monitor any kind of network interface
+  * shows detailed statistics about the interface.
   * it's themeable
