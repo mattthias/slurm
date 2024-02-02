@@ -6,7 +6,8 @@ Build-Depends: debhelper (>= 13),
                debhelper-compat (= 13),
                libncurses-dev,
                meson
-Standards-Version: 4.6.0
+Standards-Version: 4.6.2
+Rules-Requires-Root: no
 Vcs-Git: https://salsa.debian.org/matthias-guest/slurm.git
 Vcs-Browser: https://salsa.debian.org/matthias-guest/slurm/
 Homepage: https://github.com/mattthias/slurm
