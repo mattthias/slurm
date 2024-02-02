@@ -2,8 +2,12 @@ slurm (0.4.4-1) unstable; urgency=medium
 
   * Import new upstream version 0.4.4
   * Fix FTBFS issue with glibc 2.3 (Closes: #993874)
+  * Bump Standards-Version to 4.6.2
+  * Add "Rules-Require-Root: no"
+  * Switch to debhelper 13
+  * Enable hardening via DEB_BUILD_MAINT_OPTIONS
 
- -- Matthias Schmitz <matthias@sigxcpu.org>  Sun, 01 May 2022 00:28:52 +0200
+ -- Matthias Schmitz <matthias@sigxcpu.org>  Fri, 02 Feb 2024 23:34:17 +0100
 
 slurm (0.4.3-2.1) unstable; urgency=medium
 
