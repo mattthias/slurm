@@ -5,6 +5,13 @@ slurm (0.4.4-1) unstable; urgency=medium
 
  -- Matthias Schmitz <matthias@sigxcpu.org>  Sun, 01 May 2022 00:28:52 +0200
 
+slurm (0.4.3-2.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Fix FTBFS by removing deprecated sys/sysctl.h (closes: #993874)
+
+ -- Philip Rinn <rinni@debian.org>  Sun, 27 Nov 2022 13:31:19 +0100
+
 slurm (0.4.3-2) unstable; urgency=medium
 
   * Fix broken debian/watch file.
