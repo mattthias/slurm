@@ -1,5 +1,12 @@
 project('slurm', 'c')
 
+conf_data = configuration_data()
+conf_data.set('version', '0.4.5-dev')
+conf_data.set('install_prefix', get_option('prefix'))
+
+configure_file(input : 'config.h.in',
+               output : 'config.h',
+               configuration : conf_data)
 
 # We want ncurses but meson wraps ncurses and curses into the curses dependency
 # https://mesonbuild.com/Dependencies.html#curses

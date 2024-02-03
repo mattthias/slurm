@@ -1,0 +1,3 @@
+#define PACKAGE_VERSION "@version@"
+#define VERSION "@version@"
+#define INSTALL_PREFIX "@install_prefix@"
