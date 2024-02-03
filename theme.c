@@ -49,9 +49,12 @@ int theme_readfile(theme * t, char *name)
     FILE *f;
     char buf[BUFSIZ + 1];
     char filename[BUFSIZ + 1];
-    char *search_paths[5];
+    char *search_paths[3];
     char *p, *val, *key;
     int iter;
+    char pref[sizeof(INSTALL_PREFIX)+15];
+
+    strcpy(pref, INSTALL_PREFIX);
 
     t->complete = E_NULL;
 
@@ -64,11 +67,9 @@ int theme_readfile(theme * t, char *name)
      */
     search_paths[0] = ".";      /* local directory */
     search_paths[1] = strcat(getenv("HOME"), "/.slurm");        /* $HOME/.slurm/ */
-    search_paths[2] = "/usr/share/slurm";       /* Debian style */
-    search_paths[3] = "/usr/local/share/slurm"; /* default install path */
-    search_paths[4] = "/usr/pkg/share/slurm";   /* NetBSD style */
+    search_paths[2] = strcat(pref, "/share/slurm");    /* search in $PREFIX/share/slurm/ */
 
-    for (iter = 0; iter <= 4; iter++) {
+    for (iter = 0; iter <= 2; iter++) {
         bzero(&filename, BUFSIZ);
         snprintf(filename, BUFSIZ, "%s/%s.theme", search_paths[iter],
                  name);
