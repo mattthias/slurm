@@ -1,5 +1,4 @@
-.TH slurm 1
-.Dd February 23, 2003
+.Dd February 4, 2024
 .Dt slurm 1
 .\" $Id: slurm.1,v 1.4 2004/02/06 02:33:54 hscholz Exp $
 .\"
@@ -10,7 +9,8 @@ slurm \- yet another network load monitor
 .Op Fl hHz
 .Op Fl csl
 .Op Fl d Ar delay
-.B  -i interface
+.Op Fl i Ar interface
+.Op Fl t Ar theme
 .Sh DESCRIPTION
 slurm is a generic network load monitor which shows device statistics
 together with a nice ascii graph. Three different types of graphs are
@@ -33,6 +33,8 @@ virtually zero traffic counters instead of showing values stored in kernel
 delay between screen updates in seconds (must be between 1 and 300)
 .It Fl i Ar interface
 select interface to monitor (required)
+.It Fl t Ar theme
+select theme, searches ~/.slurm and ${PREFIX}/share/slurm
 .El
 .Sh KEYS
 slurm supports several different keys for interaction:
