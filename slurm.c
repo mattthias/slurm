@@ -988,7 +988,7 @@ int update_stat_combined(void)
         /* for each line rewrite the graph */
         for (x = GRAPHCOMBINED_WIDTH - 1; x >= 0; x--) {
             i = (int) ((rx_speedarray[x] / comb_maxspeed) *
-                       GRAPHSPLIT_HEIGHT);
+                       GRAPHCOMBINED_HEIGHT);
             for (y = 0; y <= GRAPHCOMBINED_HEIGHT; y++) {
                 if (i > y)
                     rx_graph[x][y] = 1;
