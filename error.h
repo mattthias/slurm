@@ -9,11 +9,11 @@
  *       (i.e. & 0x01ff to enable syslog logging)
  */
 
-#define ERR_DEBUG	0x0001
-#define ERR_NOTICE	0x0003
-#define ERR_WARNING 0x0004
-#define ERR_ERROR	0x0005
-#define ERR_FATAL	0x0006
+#define ERR_DEBUG	(0x0001)
+#define ERR_NOTICE	(0x0003)
+#define ERR_WARNING (0x0004)
+#define ERR_ERROR	(0x0005)
+#define ERR_FATAL	(0x0006)
 #define ERRBUF BUFSIZ
 
 #endif

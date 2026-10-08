@@ -29,7 +29,7 @@
 /* set variables for extra features */
 #if defined (__sun__) || defined (__sun)
 # ifndef __Solaris__
-#  define __Solaris__ 1
+#  define __Solaris__ (1)
 # endif
 #endif
 
@@ -47,7 +47,7 @@
 
 #ifdef __HPUX__             /* H P U X */
 #define _XOPEN_SOURCE_EXTENDED
-#define NO_CURSES_E	1
+#define NO_CURSES_E	(1)
 #include <stdio.h>
 #include <sys/param.h>
 #include <stdlib.h>
@@ -200,7 +200,7 @@
 #include <linux/if_ppp.h>
 #elif defined (__Solaris__)           /* S O L A R I S */
 #include <stdio.h>
-#define NO_CURSES_E	1
+#define NO_CURSES_E	(1)
 #define _WIDEC_H
 #include <sys/param.h>
 #include <stdlib.h>

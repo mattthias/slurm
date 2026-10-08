@@ -1,5 +1,5 @@
 #include <netio.h>
-#define WAIT_PCKS_COUNTER   15
+#define WAIT_PCKS_COUNTER   (15)
 
 /* $Id: hpux.c,v 1.7 2003/02/23 17:26:02 hscholz Exp $ */
 

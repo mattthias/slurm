@@ -22,14 +22,14 @@
  *
  ***************************************************************************/
 
-#define LED_RX    1
-#define LED_TX    2
+#define LED_RX    (1)
+#define LED_TX    (2)
 
 #ifndef TRUE
-#define TRUE 1
+#define TRUE (1)
 #endif
 #ifndef FALSE
-#define FALSE 0
+#define FALSE (0)
 #endif
 
 #define SYMBOL_TRAFFIC		"x"
@@ -39,9 +39,9 @@
 #define PATH_NET_DEV "/proc/net/dev"
 #endif
 
-#define MODE_COMBINED 1
-#define MODE_SPLIT 2
-#define MODE_LARGE 3
+#define MODE_COMBINED (1)
+#define MODE_SPLIT (2)
+#define MODE_LARGE (3)
 
 /* slap HPUX with a large trout
  * HPUX 10.xx cannot handle 2^32 int constants, so we have to "tweak" it
@@ -54,17 +54,17 @@
 #endif
 
 #undef MAXHOSTNAMELEN
-#define MAXHOSTNAMELEN 64
+#define MAXHOSTNAMELEN (64)
 
-#define DRAWLEN 16
+#define DRAWLEN (16)
 
 /* 10th of a second */
-#define REFRESH_DEFAULT 1
-#define REFRESH_MIN 1
-#define REFRESH_MAX 300
+#define REFRESH_DEFAULT (1)
+#define REFRESH_MIN (1)
+#define REFRESH_MAX (300)
 
 #ifndef BUFSIZ
-#define BUFSIZ 1024
+#define BUFSIZ (1024)
 #warning "setting buf size to 1024"
 #endif
 
@@ -141,16 +141,16 @@ void zero_stats (void);
 void slurm_shutdown (int);
 
 /* Variables Declarations */
-#define TYPE_MEGA 0
-#define TYPE_GIGA 1
+#define TYPE_MEGA (0)
+#define TYPE_GIGA (1)
 int data_type = TYPE_MEGA;
 long refreshdelay = REFRESH_DEFAULT;
 
 /* internal database status */
 /* possible modes are: */
-#define DB_STATUS_STARTUP 1
-#define DB_STATUS_RUNNING 2
-#define DB_STATUS_REINIT  3
+#define DB_STATUS_STARTUP (1)
+#define DB_STATUS_RUNNING (2)
+#define DB_STATUS_REINIT  (3)
 int db_status = DB_STATUS_STARTUP;
 
 #ifdef __linux
@@ -158,23 +158,21 @@ static FILE *proc_net_dev;
 #endif
 /* End of Variables Declarations */
 
-/* max speed in graph */
-#define GRAPHSINGLE_WIDTH 77
-#define GRAPHSINGLE_HEIGHT 10
+/* new max width and height */
+/* Note that these first two constants are used to define array sizes, 
+ * so they must be larger/equal to all other heights/widths. */
+#define GRAPH_HEIGHT (12)
+#define GRAPH_WIDTH (78)
 
 /* define graph height for split screen graphs */
-#define GRAPHSPLIT_HEIGHT 6
-#define GRAPHSPLIT_WIDTH 77
+#define GRAPHSPLIT_HEIGHT (6)
+#define GRAPHSPLIT_WIDTH GRAPH_WIDTH
 
-#define GRAPHCOMBINED_WIDTH 77
-#define GRAPHCOMBINED_HEIGHT 12
-
-/* new max height */
-#define GRAPH_HEIGHT 12
-#define GRAPH_WIDTH 77
+#define GRAPHCOMBINED_HEIGHT GRAPH_HEIGHT
+#define GRAPHCOMBINED_WIDTH GRAPH_WIDTH
 
 /* large split mode graph height */
-#define GRAPHLARGE_HEIGHT 11
+#define GRAPHLARGE_HEIGHT (11)
 
 /* rx is higher than need as we use it for the combined view */
 int rx_graph[GRAPHSPLIT_WIDTH][GRAPHCOMBINED_HEIGHT];
