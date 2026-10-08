@@ -68,6 +68,22 @@ or on OpenBSD 6.9
 
         slurm -i eth0 # or whatever your interface is
 
+## Build with address sanitation
+
+ - Setup a build directory with ASan enabled
+
+        meson setup _build-asan -Db_sanitize=address -Dbuildtype=debug
+
+ - Run meson to build
+
+        cd _build-asan/
+        meson compile
+
+- Write ASan errors to log file
+
+        `ASAN_OPTIONS=log_path=asan.log ./slurm -i eth0`
+
+
 Please report bugs and feature requests in the github bugtracker:
  website: https://github.com/mattthias/slurm
 
